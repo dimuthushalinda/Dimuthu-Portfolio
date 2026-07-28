@@ -314,7 +314,25 @@ section {
 
 /* Responsive: collapse links on small screens */
 @media (max-width: 980px) {
-    .nav-pill .nav-links { display: none; }
+    .nav-pill .nav-links { 
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: var(--bg-color);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 3rem;
+        gap: 1.5rem;
+        transition: left var(--transition-speed);
+        box-shadow: var(--shadow-lg);
+        z-index: 999;
+    }
+    .nav-pill .nav-links.active {
+        left: 0;
+    }
     .hamburger { display: flex; }
 }
 
@@ -1544,30 +1562,6 @@ section {
 }
 
 @media (max-width: 768px) {
-    .nav-links {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: var(--bg-color);
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 3rem;
-        gap: 1.5rem;
-        transition: left var(--transition-speed);
-        box-shadow: var(--shadow-lg);
-    }
-    
-    .nav-links.active {
-        left: 0;
-    }
-    
-    .hamburger {
-        display: flex;
-    }
-    
     .hero-content {
         flex-direction: column-reverse;
         gap: 2rem;
