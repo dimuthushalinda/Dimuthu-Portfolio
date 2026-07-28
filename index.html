@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Dimuthu Shalinda</title>
+    <link rel="stylesheet" href="assets/css/style.css?v=7">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-pill">
+                <div class="left">
+                    <a href="#home" class="brand"><i class="fas fa-rocket"></i></a>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#blog" class="nav-link">Blog</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="right">
+                    <div class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Hi, I'm <span class="highlight">Dimuthu Shalinda</span></h1>
+                <h2 class="hero-subtitle">I'm a <span id="roleText" class="typing">Full Stack Developer & Creative Designer</span></h2>
+                <p class="hero-description">
+                    I build exceptional digital experiences that combine beautiful design with powerful functionality.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary smooth-scroll">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary smooth-scroll">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="profile-hexagon">
+                    <div class="hexagon-border"></div>
+                    <div class="hexagon-inner">
+                        <img src="assets/images/hero.jpeg" alt="Dimuthu Shalinda" class="hero-photo" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <a href="#about" class="smooth-scroll">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <p class="section-subtitle">What I can help you build</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-laptop-code service-icon"></i>
+                    <h3>Web Development</h3>
+                    <p>Full-stack web applications using modern frameworks and clean architecture.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-paint-brush service-icon"></i>
+                    <h3>UI/UX Design</h3>
+                    <p>Design systems, responsive interfaces, and user-centred experiences.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-server service-icon"></i>
+                    <h3>Backend & APIs</h3>
+                    <p>Robust backend, REST/GraphQL APIs, and database design.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-tachometer-alt service-icon"></i>
+                    <h3>Performance Optimization</h3>
+                    <p>Improve site speed, bundle optimization, and runtime performance tuning.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cloud service-icon"></i>
+                    <h3>DevOps & Deployment</h3>
+                    <p>CI/CD pipelines, containerization, and deployment to cloud platforms.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-tools service-icon"></i>
+                    <h3>Consulting & Strategy</h3>
+                    <p>Technical guidance, architecture reviews, and product strategy sessions.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt service-icon"></i>
+                    <h3>Mobile App Development</h3>
+                    <p>Cross-platform mobile apps with React Native or Flutter and native integrations.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-shopping-cart service-icon"></i>
+                    <h3>E‑commerce Solutions</h3>
+                    <p>Storefronts, payments, and catalog systems optimized for conversions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Hello! I'm Dimuthu.</h3>
+                    <p>
+                        <b>I'm a passionate Full Stack Developer with a keen eye for design and a love for creating 
+                        seamless user experiences. With expertise in modern web technologies, I transform ideas 
+                        into elegant, functional solutions.</b>
+                    </p>
+                    <p>
+                        <b>When I'm not coding, you can find me exploring new technologies, contributing to open source, 
+                        or sharing my knowledge through blog posts and tutorials.</b>
+                    </p>
+                    <div class="education">
+                        <h4><i class="fas fa-graduation-cap"></i> Education</h4>
+                        <p><strong>Advanced Technological Institute</strong></p>
+                        <p>Univercity Name | 2024 Aug - 2026 Jul</p><br>
+                        <p><strong>Mahinda College Galle</strong></p>
+                        <p>School Name | 2019 Feb - 2021 Nov</p><br>
+                        <p><strong>G/Vidyananda Vidyalaya Galle</strong></p>
+                        <p>School Name | 2005 - 2018 </p>
+                    </div>
+                    <a href="assets/resume.pdf" download class="btn btn-primary">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
+                <div class="skills">
+                    <h3>My Skills</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span><i class="fab fa-html5"></i> HTML/CSS</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span><i class="fab fa-js"></i> JavaScript</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span><i class="fab fa-react"></i> React</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span><i class="fab fa-node"></i> Node.js</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span><i class="fas fa-database"></i> Database (SQL/NoSQL)</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span><i class="fab fa-python"></i> Python</span>
+                            <span>65%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience</h2>
+            <p class="section-subtitle">A snapshot of my recent professional roles</p>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Digital Marketing Advisor Intern</h3>
+  
+                    <h3><span>Peoples Bank</span></h3>
+                    </div>
+                    <h3><span>April 2023 - Feb 2024</span></h3>
+                    <p>Provided guidance on digital financial solutions, digital banking services, online banking setup and mobile banking
+support. while improving customer service and presentation skills..</p>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Full Stack Developer</h3>
+                        <h3><span>Freelance Web Developer</span></h3>
+                    </div>
+                    <h3>Jan 2024 - Present</h3>
+                    <p>Designed and shipped full stack web applications and AI-powered platforms using Next.js, React, TypeScript, and Supabase, with hands-on experience in AI API integrations, responsive UI design, and backend development using NestJS and Laravel.</p>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <h3>Graphic Designer</h3>
+                        <h3><span>Curry Bowl Resturent
+                        </span></h3>
+                    </div>
+                    <h3>Apr 2026 - May 2026</h3>
+                    <p>Worked as a Graphic Designer at Curry Bowl Restaurant, Croatia, responsible for designing professional logos, posters, notices, and labels for the restaurant's branding and marketing needs using Adobe Photoshop, Adobe Illustrator, and CorelDraw.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements" id="achievements">
+        <div class="container">
+            <h2 class="section-title">Achievements</h2>
+            <p class="section-subtitle">Highlights from my journey so far</p>
+            <div class="achievement-grid">
+                <div class="achievement-card">
+                    <img src="assets/images/introva.jpg" alt="Top Contributor" class="achievement-image" loading="lazy" onclick="openModal(this.src)">
+                    <div class="achievement-details">
+                        <h3>3rd Place | Web Category | INTROVA 2025</h3>
+                        <p>I secured 3rd Place in the INTROVA 2025 1.0 Robotics and Web Competition organized by the Pulzar Club in the Department of Information Technology, Advanced Technological Institute (ATI), Galle.This experience has been an incredible journey, where I had the opportunity to showcase my software development project and apply my knowledge in web development, artificial intelligence, and problem-solving to address real-world challenges. A huge thank you to the organizers, judges, and lecturers for creating such an inspiring platform for innovation, creativity, and learning.</p>
+                        <span>Department of Information Technology | ATI Galle | SLIATE</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <img src="assets/images/innovisioncertificate.jpg" alt="INNOVISION 2026" class="achievement-image" loading="lazy" onclick="openModal(this.src)">
+                    <div class="achievement-details">
+                        <h3>3rd Place | AI-Based Website Category | INNOVISION 2026</h3>
+                        <p>Awarded 3rd Place in the AI-Based Website category at INNOVISION 2026, competing against fellow undergraduate students from the Department of Information Technology. The project was evaluated by a panel of academic staff and industry professionals using a structured 100-mark rubric across multiple criteria including functionality, design, AI integration quality, and real-world utility.</p>
+                        <span>Department of Information Technology | ATI Galle | SLIATE</span>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <img src="assets/images/python.jpg" alt="Design Award" class="achievement-image" loading="lazy" onclick="openModal(this.src)">
+                    <div class="achievement-details">
+                        <h3>Certificate | Python For Beginners</h3>
+                        <p>Completed the Python for Beginners online learning programme conducted by the Department of Computer Science & Engineering, Faculty of Engineering, University of Moratuwa, through the Centre for Open & Distance Learning (CODL).This programme provided a solid foundation in Python programming, covering core concepts essential for software development, data analysis, and automation..</p>
+                        <span>University of Moratuwa |The Centre for Open & Distance Learning CODL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+      <section class="stats" id="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="10">0</h3>
+                        <p class="stat-label">Projects Completed</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="21">0</h3>
+                        <p class="stat-label">Happy Clients</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="1">0</h3>
+                        <p class="stat-label">Internships</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" data-target="3">0</h3>
+                        <p class="stat-label">Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <p class="section-subtitle">Here are some of my recent works</p>
+            <div class="projects-grid">
+
+            <!-- Project Card 1 -->
+                  <div class="project-card">
+                    <div class="project-image">
+                        <img src="D:\PROJECTS\PORTFOLIO\Portfolio-Website-Personal-Project--main\assets\images\hnditweb.PNG" alt="HNDIT SMART LAB">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/dimuthushalinda/HNDIT-WEB" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://hndit-web.up.railway.app/" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>HNDIT SMART LAB</h3>
+                        <p>Developed an AI-powered e-learning platform for HNDIT students with interactive labs, quizzes, progress tracking, and role-based dashboards.Integrated Google Gemini AI to automatically transform PDF lecture notes into structured learning modules, coding exercises, and simulations.Implemented gamification features including XP, achievement badges, and leaderboards to enhance student engagement.Built secure Admin and Student portals with authentication, content management, analytics, and curriculum organization..</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">TypeScript</span>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Project Card 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="D:\PROJECTS\PORTFOLIO\Portfolio-Website-Personal-Project--main\assets\images\portfolio.PNG" alt="Portfolio-Website">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/Scopiarchy/Portfolio-Website-Personal-Project-" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="roject-links">
+                                <a href="https://github.com/Scopiarchy/Portfolio-Website-Personal-Project-" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Portfolio-Website</h3>
+                        <p>A responsive portfolio website built with HTML, CSS, and JavaScript to professionally showcase personal projects and skills.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Html</span>
+                            <span class="tech-tag">Css</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Project Card 3 -->
+                  <div class="project-card">
+                    <div class="project-image">
+                        <img src="D:\PROJECTS\PORTFOLIO\Portfolio-Website-Personal-Project--main\assets\images\constructai.PNG" alt="ConstructAi">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/dimuthushalinda/Construct-flow" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://github.com/dimuthushalinda/Construct-flow" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>ConstructAi</h3>
+                        <p>Built a full-stack AI-powered construction management platform with role-based access for six user types using React Native, FastAPI, and Supabase.Integrated Claude AI for automated project cost estimation and implemented QR-based attendance, payroll automation, and real-time project management.Designed an ML-ready analytics dashboard for delay prediction, cost overrun analysis, and resource optimization using scalable XGBoost architecture..</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Supabase</span>
+                            <span class="tech-tag">Gemini API</span>
+                        </div>
+                    </div>
+                </div>
+            <!-- Project Card 4 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="D:\PROJECTS\PORTFOLIO\Portfolio-Website-Personal-Project--main\assets\images\invoice.PNG" alt="Invoice-Billing-System">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/Scopiarchy/Invoice-Billing-System-Web-Application" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://dimuthu-shalinda-portfolio.vercel.app/" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Invoice-Billing-System</h3>
+                        <p>A simple and efficient web-based invoice billing system built using HTML, CSS, PHP, and MySQL. This project runs on a local XAMPP environment and is designed to help small businesses manage customer invoices, billing records, and basic transaction tracking in an easy and user-friendly way.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Html</span>
+                            <span class="tech-tag">Php</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Project Card 5 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="D:\PROJECTS\PORTFOLIO\Portfolio-Website-Personal-Project--main\assets\images\innovion web.PNG" alt="Social Media Dashboard">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/dimuthushalinda/innovision" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://innovision-students.vercel.app/" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>INNOVION WEBSITE</h3>
+                        <p>I had the privilege of designing and developing the official invitation website for INNOVISION 2026 the Annual Student Project Showcase and Innovation Exhibition of the Department of Information Technology, Advanced Technological Institute (ATI), Galle, held on 21st oJuly 2026.This project pushed me to combine creativity with technical skill from writing smooth scroll animations to building an interactive particle system that reacts to mouse movement. Every section was carefully designed to match the theme "Vision Beyond Innovation."Building something that represents your entire department and is seen by students, staff, and industry professionals is a feeling like no other. .</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Html</span>
+                            <span class="tech-tag">Vanilla.js</span>
+                            <span class="tech-tag">Css</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 6 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="D:\PROJECTS\PORTFOLIO\Portfolio-Website-Personal-Project--main\assets\images\expence tracker.PNG" alt="AI Chatbot">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/dimuthu-shalinda/Personal-Expense-and-Income-Manager" target="_blank" class="project-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://github.com/dimuthu-shalinda/Personal-Expense-and-Income-Manager" target="_blank" class="project-link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Income And Expence Tracker</h3>
+                        <p>Personal Expense & Income Manager is a responsive web application that helps users efficiently manage their personal finances by tracking income, recording expenses, categorizing transactions, and monitoring their overall financial balance. Built with HTML5, CSS3, and JavaScript, the project demonstrates modern front-end development practices, responsive design, and practical data management while providing a simple and intuitive user experience. Future enhancements include user authentication, financial analytics, cloud database integration, and PDF/Excel reporting..</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">Flask</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <h2 class="section-title">Latest Blog Posts</h2>
+            <p class="section-subtitle">Sharing my thoughts and experiences</p>
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="D:\PROJECTS\PORTFOLIO\Portfolio-Website-Personal-Project--main\assets\images\fiverr.png" alt="Blog Post 1">
+                        <span class="blog-date">Dec 6, 2022</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3> 11 Tricky Ways To Get Your First Order On Fiverr – 2022</h3>
+                        <p>
+                              Fiverr is something like a food city where there are buyers as well as service providers.It is traded without the use of physical money and is done entirely over the internet.Fiverr is an online platform that allows get service and sells what people are want.
+                        </p>
+                        <a href="https://docs.google.com/document/d/1s_iZl-cwmMzmtejlFy6jY-se1RyK-Yvq/edit?usp=drive_link&ouid=108685839921299571097&rtpof=true&sd=true" target="_blank" class="blog-link">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="D:\PROJECTS\PORTFOLIO\Portfolio-Website-Personal-Project--main\assets\images\Borei-A-ssbn-scaled.webp" alt="Blog Post 2">
+                        <span class="blog-date">Nov 28, 2024</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Submarine Graveyard, Kola Peninsula, Russia</h3>
+                        <p>
+                            Do you have a passion for submarines? I'm sure you'll be shocked if I tell you there is a submarine graveyard. Many Russian submarines have died in the area surrounding Nezametnaya Cove, close to the village of Gadzhiyevo, in Murmansk Oblast on the Kola Peninsula. 
+                        </p>
+                        <a href="https://docs.google.com/document/d/1-kEK8RLfTz7OkeqIM3Q2MRxDqAlQUTxJN4rFk-pR638/edit?usp=drive_link" target="_blank" class="blog-link">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="D:\PROJECTS\PORTFOLIO\Portfolio-Website-Personal-Project--main\assets\images\jameswebbtelescope.gif">
+                        <span class="blog-date">Nov 20, 2024</span>
+                    </div>
+                    <div class="blog-content">
+                        <h3>James Webb and his old brother
+
+</h3>
+                        <p>
+                           However, the Hubble Space Telescope, often known as HST or Hubble, is an observatory that was put into low-Earth orbit in 1990 and is still in use today.Despite not being the first, it is one of the biggest and most efficient space telescopes.
+                        <a href="https://docs.google.com/document/d/1B5tNfLs84DpWGShb155hpak0KgwynRnVRwhWsAPQEeY/edit?usp=drive_link" target="_blank" class="blog-link">
+                            Read More <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">I'd love to hear from you!</p>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>
+                        Whether you have a project in mind, want to collaborate, or just want to say hi, 
+                        feel free to reach out. I'm always open to discussing new opportunities.
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>dimuthushalinda0404@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+94 76 8343 138</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>Udugama Galle Sri Lanka</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Sending...
+                        </span>
+                    </button>
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3>Dimuthu Shalinda</h3>
+                    <p>Full Stack Developer & Creative Designer</p>
+                </div>
+                <div class="footer-center">
+                    <div class="social-links">
+                        <a href="https://github.com/dimuthu-shalinda" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dimuthu-shalinda/" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/yourusername" target="_blank" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://instagram.com/dimuthushalinda" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <p>&copy; 2025 Dimuthu Shalinda. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="image-modal">
+        <span class="image-modal-close" onclick="closeModal()"><i class="fas fa-times"></i></span>
+        <img class="image-modal-content" id="modalImage">
+    </div>
+
+    <script src="assets/js/main.js?v=4"></script>
+</body>
+</html>
