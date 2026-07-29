@@ -313,7 +313,7 @@ section {
 }
 
 /* Responsive: collapse links on small screens */
-@media (max-width: 980px) {
+@media (max-width: 768px) {
     .nav-pill .nav-links { 
         position: fixed;
         top: 80px;
@@ -1562,6 +1562,9 @@ section {
 }
 
 @media (max-width: 768px) {
+    .hero {
+        padding-top: 120px;
+    }
     .hero-content {
         flex-direction: column-reverse;
         gap: 2rem;
