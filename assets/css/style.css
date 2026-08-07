@@ -102,14 +102,14 @@ section {
    Navigation Bar
    =================================== */
 .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    position: static;
+    top: auto;
+    left: auto;
+    width: auto;
     background: transparent;
     backdrop-filter: none;
     box-shadow: none;
-    z-index: 1000;
+    z-index: auto;
     transition: all var(--transition-speed);
     border-bottom: none;
 }
@@ -119,9 +119,9 @@ section {
 }
 
 .navbar.scrolled {
-    box-shadow: var(--shadow-md);
-    background: rgba(26,29,41,0.6);
-    backdrop-filter: blur(6px);
+    box-shadow: none;
+    background: transparent;
+}
 }
 
 [data-theme="light"] .navbar.scrolled {
@@ -221,21 +221,31 @@ section {
     justify-content: space-between;
     gap: 1rem;
     padding: 10px 18px;
-    background: linear-gradient(180deg, rgba(26,29,41,0.92), rgba(26,29,41,0.78));
-    border-radius: 999px;
-    box-shadow: 0 18px 40px rgba(2,6,23,0.6);
-    border: 1px solid rgba(255,255,255,0.04);
+    /* default pill background (will be overridden by theme-specific rules) */
+    background: linear-gradient(135deg, rgba(26,29,41,0.72), rgba(12,13,18,0.68));
+    border-radius: 18px;
+    box-shadow: 0 8px 26px rgba(2,6,23,0.25);
+    border: 1px solid rgba(255,255,255,0.035);
+    position: relative;
     transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
 }
 
 [data-theme="light"] .nav-pill {
-    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(249,250,251,0.95));
+    /* light theme: softer white with a tint of primary color */
+    background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(230,255,240,0.85));
     border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 8px 20px rgba(2,6,23,0.04);
+}
+
+/* Desktop dark theme pill explicit match */
+[data-theme="dark"] .nav-pill {
+    background: linear-gradient(135deg, rgba(101,31,255,0.10), rgba(0,230,118,0.06));
+    border: 1px solid rgba(255,255,255,0.035);
 }
 
 .nav-pill:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 28px 60px rgba(2,6,23,0.35);
+    transform: none;
+    box-shadow: none;
 }
 
 .nav-pill .left .brand {
@@ -314,26 +324,182 @@ section {
 
 /* Responsive: collapse links on small screens */
 @media (max-width: 768px) {
+    /* remove container side padding on mobile so navbar can be flush */
+    .container {
+        padding: 0;
+    }
+
+    /* make nav-pill full width but keep rounded corners on mobile */
+    .nav-pill {
+        border-radius: 12px;
+    }
+    /* Mobile: keep the menu inside the rounded pill as a dropdown */
     .nav-pill .nav-links { 
-        position: fixed;
-        top: 80px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 80px);
-        background: var(--bg-color);
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 12px;
+        right: 12px;
+        width: auto;
+        max-height: 60vh;
+        overflow: auto;
+        background: linear-gradient(135deg, rgba(26,29,41,0.92), rgba(26,29,41,0.84));
+        border-radius: 12px;
+        display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
         justify-content: flex-start;
-        padding-top: 3rem;
-        gap: 1.5rem;
-        transition: left var(--transition-speed);
-        box-shadow: var(--shadow-lg);
-        z-index: 999;
+        padding: 8px 12px;
+        gap: 0.5rem;
+        transition: opacity 0.26s ease, transform 0.26s ease;
+        opacity: 0;
+        transform: translateY(-6px);
+        pointer-events: none;
+        z-index: 1200;
     }
     .nav-pill .nav-links.active {
-        left: 0;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    /* Theme-specific dropdown colors for stronger glass effect */
+    [data-theme="dark"] .nav-pill .nav-links {
+        background: linear-gradient(180deg, rgba(12,13,18,0.68), rgba(26,29,41,0.7));
+        border: 1px solid rgba(255,255,255,0.04);
+        backdrop-filter: blur(12px) saturate(140%);
+    }
+    [data-theme="light"] .nav-pill .nav-links {
+        background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(245,255,245,0.92));
+        border: 1px solid rgba(0,0,0,0.06);
+        backdrop-filter: blur(8px) saturate(120%);
     }
     .hamburger { display: flex; }
+
+    /* Make the pill navbar full width on mobile but semi-transparent rounded */
+    .nav-pill {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 8px 12px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(26,29,41,0.92), rgba(12,13,18,0.88));
+        border: 1px solid rgba(255,255,255,0.04);
+        box-shadow: 0 10px 30px rgba(2,6,23,0.32);
+    }
+    [data-theme="light"] .nav-pill {
+        background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(240,255,245,0.9));
+        border: 1px solid rgba(0,0,0,0.06);
+        box-shadow: 0 6px 16px rgba(2,6,23,0.04);
+    }
+
+    /* Mobile explicit theme matching for the rounded pill */
+    [data-theme="dark"] .nav-pill {
+        background: linear-gradient(135deg, rgba(101,31,255,0.12), rgba(0,230,118,0.08));
+        backdrop-filter: blur(12px) saturate(160%);
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+    [data-theme="light"] .nav-pill {
+        background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(230,255,240,0.94));
+        backdrop-filter: blur(8px) saturate(120%);
+        border: 1px solid rgba(0,0,0,0.06);
+    }
+}
+
+/* Ensure html/body follow theme bg and remove any stray white strips */
+html, body {
+    background-color: var(--bg-color) !important;
+}
+
+@media (max-width: 768px) {
+    .navbar .container {
+        padding: 0 !important;
+    }
+    .nav-pill {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        left: 0;
+        right: 0;
+        box-shadow: 0 8px 22px rgba(2,6,23,0.35);
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.03);
+        background: linear-gradient(135deg, rgba(26,29,41,0.92), rgba(12,13,18,0.88));
+    }
+
+    /* position hamburger inside the pill so it lines up */
+    .navbar .container { position: relative; }
+    .hamburger {
+        position: absolute;
+        right: 14px;
+        top: 23px; /* moved slightly lower */
+        z-index: 1101;
+    }
+    /* move theme-toggle left so it's inside the pill and doesn't clash with hamburger */
+    .nav-pill .right .theme-toggle {
+        position: absolute;
+        right: 70px; /* slightly left, smaller than previous */
+        top: 8px;
+        z-index: 1101;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        background: rgba(255,255,255,0.02);
+        box-shadow: 0 6px 18px rgba(2,6,23,0.18);
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.05rem;
+    }
+    /* add right padding to nav-pill so content doesn't underlap hamburger/theme toggle */
+    .nav-pill { padding-right: 92px; }
+
+    /* ensure menu items are visually grouped inside pill */
+    .nav-pill .nav-link {
+        background: transparent;
+        padding: 10px 12px;
+        border-radius: 8px;
+    }
+
+    /* stronger glass effect on mobile pill */
+    .nav-pill {
+        backdrop-filter: blur(10px) saturate(140%);
+    }
+
+    /* theme-specific styles for the toggle on mobile */
+    [data-theme="dark"] .nav-pill .right .theme-toggle {
+        background: rgba(255,255,255,0.02);
+        color: var(--text-primary);
+        box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+    }
+    [data-theme="light"] .nav-pill .right .theme-toggle {
+        background: rgba(255,255,255,0.95);
+        color: var(--text-primary);
+        box-shadow: 0 6px 16px rgba(2,6,23,0.06);
+    }
+
+    /* slightly larger icon inside toggle to match brand size */
+    .nav-pill .right .theme-toggle i { font-size: 1.25rem; }
+}
+
+/* Glassmorphism effect on the pill when the page is scrolled */
+.navbar.scrolled .nav-pill {
+    backdrop-filter: blur(8px) saturate(120%);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 8px 30px rgba(2,6,23,0.25);
+}
+
+[data-theme="light"] .navbar.scrolled .nav-pill {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 6px 20px rgba(2,6,23,0.06);
+}
+
+[data-theme="dark"] .navbar.scrolled .nav-pill {
+    background: rgba(15,16,22,0.6);
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 8px 28px rgba(2,6,23,0.35);
 }
 
 /* ===================================

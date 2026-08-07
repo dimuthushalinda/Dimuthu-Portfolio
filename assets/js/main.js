@@ -71,7 +71,11 @@ hamburger.addEventListener("click", () => {
 });
 
 window.addEventListener("scroll", () => {
-    navbar.classList.toggle("scrolled", window.scrollY > 50);
+    if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
     backToTop.classList.toggle("visible", window.scrollY > 300);
 });
 
