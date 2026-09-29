@@ -1,8 +1,8 @@
 // ==================================================
 // SUPABASE CONFIG
 // ==================================================
-const SUPABASE_URL = "https://lcyfhqltbbewoyhotgzr.supabase.co"; 
-const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxjeWZocWx0YmJld295aG90Z3pyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUxOTUzMDAsImV4cCI6MjEwMDc3MTMwMH0.qdlibAMbDc4MtSsMNqauqz82ZrsmibHkkhkLghrPOkI";
+const SUPABASE_URL = "https://fizudiwdkyalvwilwmpi.supabase.co"; 
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpenVkaXdka3lhbHZ3aWx3bXBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ4MzkxOTYsImV4cCI6MjA4MDQxNTE5Nn0.VB-4g0DzyGyWzWPUUmbcRPtdLciVHiYw1or52O-dqZk";
 
 // ==================================================
 // SUPABASE INSERT FUNCTION (FULLY FIXED + DEBUG)
