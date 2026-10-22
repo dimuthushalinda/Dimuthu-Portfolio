@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio - Dimuthu Shalinda</title>
-    <link rel="stylesheet" href="assets/css/style.css?v=7">
+    <link rel="stylesheet" href="assets/css/style.css?v=9">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -20,6 +20,7 @@
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#designs" class="nav-link">Designs</a></li>
                     <li><a href="#blog" class="nav-link">Blog</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
@@ -381,11 +382,10 @@ support. while improving customer service and presentation skills..</p>
                         <img src="assets\images\portfolio.PNG" alt="Portfolio-Website">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://github.com/Scopiarchy/Portfolio-Website-Personal-Project-" target="_blank" class="project-link">
+                                <a href="https://github.com/Scopiarchy/Portfolio-Website-Personal-Project-" target="_blank" class="project-link" title="GitHub Repository">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="roject-links">
-                                <a href="https://github.com/Scopiarchy/Portfolio-Website-Personal-Project-" target="_blank" class="project-link">
+                                <a href="https://github.com/Scopiarchy/Portfolio-Website-Personal-Project-" target="_blank" class="project-link" title="Live Preview">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
                             </div>
@@ -412,7 +412,7 @@ support. while improving customer service and presentation skills..</p>
                                 <a href="https://github.com/dimuthushalinda/Construct-flow" target="_blank" class="project-link">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://github.com/dimuthushalinda/Construct-flow" target="_blank" class="project-link">
+                                <a href="https://construct-flow.up.railway.app/" target="_blank" class="project-link">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
                             </div>
@@ -504,6 +504,257 @@ support. while improving customer service and presentation skills..</p>
                             <span class="tech-tag">Flask</span>
                         </div>
                     </div>
+                </div>
+
+                <!-- Project Card 7 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/quizblitz.jpg" alt="Quiz Blitz">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/dimuthu-shalinda/quiz-blitz" target="_blank" class="project-link" title="GitHub Repository">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://github.com/dimuthu-shalinda/quiz-blitz" target="_blank" class="project-link" title="Live Preview">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Quiz Blitz</h3>
+                        <p>An interactive trivia and competitive quiz web platform built with TypeScript and modern component architecture. Features real-time countdown timer challenges, dynamic score calculation, responsive category selection, and an engaging neon gaming interface with live leaderboard updates.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Supabase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 8 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/lms.PNG" alt="LMS Learning Platform">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/dimuthu-shalinda/LMS" target="_blank" class="project-link" title="GitHub Repository">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://live.think-path.com/" target="_blank" class="project-link" title="Live Preview">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>LMS - Learning Management System</h3>
+                        <p>A comprehensive educational management platform developed for structured course delivery, student learning progress tracking, video lecture modules, and academic performance monitoring. Includes administrative dashboards, interactive curriculum views, and reliable backend database architecture.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Graphic Design Gallery Section -->
+    <section class="gallery-section" id="designs">
+        <div class="container">
+            <h2 class="section-title">Graphic Design Showcase</h2>
+            <p class="section-subtitle">Visual identities, brand packages, event typography, and modern digital artwork</p>
+
+            <!-- Filter Categories -->
+            <div class="gallery-filter-bar">
+                <button class="gallery-filter-btn active" data-filter="all">All</button>
+                <button class="gallery-filter-btn" data-filter="branding">Branding</button>
+                <button class="gallery-filter-btn" data-filter="posters">Posters</button>
+                <button class="gallery-filter-btn" data-filter="packaging">Packaging</button>
+                <button class="gallery-filter-btn" data-filter="social">Social Media</button>
+                <button class="gallery-filter-btn" data-filter="art">Illustrations</button>
+            </div>
+
+            <!-- Slider Container with Side Arrows -->
+            <div class="design-slider-container">
+                <button class="gallery-nav-arrow prev" id="designPrevBtn" aria-label="Previous Design" title="Previous Work">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="design-slider-viewport" id="designSliderViewport">
+                    <div class="design-slider-track" id="designSliderTrack">
+                    <!-- Slide Item 1: Curry Bowl -->
+                    <div class="design-card" data-category="branding" data-index="0"
+                         data-title="Curry Bowl Restaurant Identity"
+                         data-category-label="Brand Identity & Packaging"
+                         data-client="Curry Bowl Restaurant • Croatia"
+                         data-image="assets/images/designs/currybowl_branding.jpg"
+                         data-tools="Adobe Photoshop, Adobe Illustrator, CorelDraw"
+                         data-desc="Complete restaurant visual identity, eco-friendly kraft paper takeaway packaging, embossed business cards, and contemporary restaurant menu layout tailored for Curry Bowl Restaurant in Croatia.">
+                        <div class="design-card-inner">
+                            <div class="design-card-media">
+                                <img src="assets/images/designs/currybowl_branding.jpg" alt="Curry Bowl Restaurant Identity" loading="lazy">
+                                <div class="design-card-overlay">
+                                    <span class="overlay-action"><i class="fas fa-arrow-up-right-from-square"></i> View Project</span>
+                                </div>
+                            </div>
+                            <div class="design-card-meta">
+                                <div class="design-meta-text">
+                                    <h3 class="design-title">Curry Bowl Restaurant</h3>
+                                    <p class="design-subtitle">Brand Identity & Packaging</p>
+                                </div>
+                                <span class="design-client-tag">Croatia</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 2: INNOVISION -->
+                    <div class="design-card" data-category="posters" data-index="1"
+                         data-title="INNOVISION 2026 Key Visual Poster"
+                         data-category-label="Event Key Visual & Poster"
+                         data-client="ATI Galle • Dept. of IT"
+                         data-image="assets/images/designs/innovision_poster.jpg"
+                         data-tools="Adobe Photoshop, Adobe Illustrator"
+                         data-desc="Futuristic exhibition keynote poster featuring holographic neon illumination, dynamic cybernetic robot illustration, balanced typography, and dark gallery ambiance for INNOVISION 2026.">
+                        <div class="design-card-inner">
+                            <div class="design-card-media">
+                                <img src="assets/images/designs/innovision_poster.jpg" alt="INNOVISION 2026 Key Visual Poster" loading="lazy">
+                                <div class="design-card-overlay">
+                                    <span class="overlay-action"><i class="fas fa-arrow-up-right-from-square"></i> View Project</span>
+                                </div>
+                            </div>
+                            <div class="design-card-meta">
+                                <div class="design-meta-text">
+                                    <h3 class="design-title">INNOVISION 2026</h3>
+                                    <p class="design-subtitle">Exhibition Key Visual</p>
+                                </div>
+                                <span class="design-client-tag">ATI Galle</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 3: Solstice -->
+                    <div class="design-card" data-category="packaging" data-index="2"
+                         data-title="Solstice Cold Brew Luxury Packaging"
+                         data-category-label="Packaging & Label Design"
+                         data-client="Aura Specialty Coffee"
+                         data-image="assets/images/designs/solstice_packaging.jpg"
+                         data-tools="Adobe Illustrator, Adobe Photoshop"
+                         data-desc="High-end artisanal beverage packaging featuring clean Swiss typographic hierarchy, gold foil embossed sun insignia stamp, and rich forest green matte box container.">
+                        <div class="design-card-inner">
+                            <div class="design-card-media">
+                                <img src="assets/images/designs/solstice_packaging.jpg" alt="Solstice Cold Brew Packaging" loading="lazy">
+                                <div class="design-card-overlay">
+                                    <span class="overlay-action"><i class="fas fa-arrow-up-right-from-square"></i> View Project</span>
+                                </div>
+                            </div>
+                            <div class="design-card-meta">
+                                <div class="design-meta-text">
+                                    <h3 class="design-title">Solstice Cold Brew</h3>
+                                    <p class="design-subtitle">Artisanal Packaging & Label</p>
+                                </div>
+                                <span class="design-client-tag">Coffee Co.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 4: Social Media -->
+                    <div class="design-card" data-category="social" data-index="3"
+                         data-title="Digital Agency Social Campaign"
+                         data-category-label="Social Media & Digital Ads"
+                         data-client="Creative Growth Agency"
+                         data-image="assets/images/designs/social_campaign.jpg"
+                         data-tools="Adobe Photoshop, Adobe Illustrator, Figma"
+                         data-desc="High-conversion digital advertising suite including multi-slide Instagram carousel posts, story ads with 3D glassmorphic spheres, energetic gradients, and engaging marketing copy.">
+                        <div class="design-card-inner">
+                            <div class="design-card-media">
+                                <img src="assets/images/designs/social_campaign.jpg" alt="Digital Agency Social Campaign" loading="lazy">
+                                <div class="design-card-overlay">
+                                    <span class="overlay-action"><i class="fas fa-arrow-up-right-from-square"></i> View Project</span>
+                                </div>
+                            </div>
+                            <div class="design-card-meta">
+                                <div class="design-meta-text">
+                                    <h3 class="design-title">Digital Agency Campaign</h3>
+                                    <p class="design-subtitle">Social Media & Brand Ads</p>
+                                </div>
+                                <span class="design-client-tag">Campaign</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 5: Geometric Tech -->
+                    <div class="design-card" data-category="branding" data-index="4"
+                         data-title="Geometric Tech Brand Identity System"
+                         data-category-label="Brand Identity & Guidelines"
+                         data-client="Corporate Identity Suite"
+                         data-image="assets/images/designs/geometric_identity.jpg"
+                         data-tools="Adobe Illustrator, Adobe Photoshop"
+                         data-desc="Corporate identity manual and logo construction system built on golden ratio geometry, comprehensive color swatch palettes, dark/light variations, and stationery mockups.">
+                        <div class="design-card-inner">
+                            <div class="design-card-media">
+                                <img src="assets/images/designs/geometric_identity.jpg" alt="Geometric Tech Brand Identity System" loading="lazy">
+                                <div class="design-card-overlay">
+                                    <span class="overlay-action"><i class="fas fa-arrow-up-right-from-square"></i> View Project</span>
+                                </div>
+                            </div>
+                            <div class="design-card-meta">
+                                <div class="design-meta-text">
+                                    <h3 class="design-title">Geometric Tech</h3>
+                                    <p class="design-subtitle">Logo & Brand Guidelines</p>
+                                </div>
+                                <span class="design-client-tag">Identity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 6: Cosmic Dreamscape -->
+                    <div class="design-card" data-category="art" data-index="5"
+                         data-title="Cosmic Dreamscape Vector Artwork"
+                         data-category-label="Vector Art & Digital Illustration"
+                         data-client="Creative Artwork Series"
+                         data-image="assets/images/designs/cosmic_illustration.jpg"
+                         data-tools="Adobe Illustrator, Adobe Photoshop"
+                         data-desc="Surreal sci-fi digital artwork featuring an astronaut drifting through neon celestial portals, liquid gradients, hand-crafted vector typography, and vivid contrast.">
+                        <div class="design-card-inner">
+                            <div class="design-card-media">
+                                <img src="assets/images/designs/cosmic_illustration.jpg" alt="Cosmic Dreamscape Vector Artwork" loading="lazy">
+                                <div class="design-card-overlay">
+                                    <span class="overlay-action"><i class="fas fa-arrow-up-right-from-square"></i> View Project</span>
+                                </div>
+                            </div>
+                            <div class="design-card-meta">
+                                <div class="design-meta-text">
+                                    <h3 class="design-title">Cosmic Dreamscape</h3>
+                                    <p class="design-subtitle">Vector Art & Print Edition</p>
+                                </div>
+                                <span class="design-client-tag">Artwork</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="gallery-nav-arrow next" id="designNextBtn" aria-label="Next Design" title="Next Work">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+            <!-- Slider Footer with Progress & Indicators -->
+            <div class="design-slider-footer">
+                <div class="design-progress-wrap">
+                    <div class="design-progress-bar" id="designProgressBar"></div>
+                </div>
+                <div class="design-dots-container" id="designDotsContainer">
+                    <!-- Dots will be dynamically generated by JS -->
+                </div>
+                <div class="design-swipe-hint">
+                    <i class="fas fa-arrows-left-right"></i> Drag or swipe to explore
                 </div>
             </div>
         </div>
@@ -673,6 +924,42 @@ support. while improving customer service and presentation skills..</p>
         <img class="image-modal-content" id="modalImage">
     </div>
 
-    <script src="assets/js/main.js?v=4"></script>
+    <!-- Dedicated Graphic Design Lightbox Modal -->
+    <div id="designLightbox" class="design-lightbox" aria-hidden="true" role="dialog">
+        <div class="design-lightbox-backdrop" id="lightboxBackdrop"></div>
+        <div class="design-lightbox-content">
+            <button class="design-lightbox-close" id="lightboxCloseBtn" aria-label="Close Lightbox">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="design-lightbox-nav prev" id="lightboxPrevBtn" aria-label="Previous artwork">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="design-lightbox-nav next" id="lightboxNextBtn" aria-label="Next artwork">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="design-lightbox-layout">
+                <div class="design-lightbox-media">
+                    <img id="lightboxImg" src="" alt="Artwork Preview">
+                </div>
+                <div class="design-lightbox-info">
+                    <span class="lightbox-category" id="lightboxCategory">Category</span>
+                    <h3 class="lightbox-title" id="lightboxTitle">Artwork Title</h3>
+                    <div class="lightbox-client" id="lightboxClient"><i class="fas fa-briefcase"></i> <span>Client</span></div>
+                    <p class="lightbox-desc" id="lightboxDesc">Description of artwork</p>
+                    <div class="lightbox-tools-box">
+                        <span class="lightbox-tools-label">Tools Used:</span>
+                        <div class="lightbox-tools-tags" id="lightboxTools"></div>
+                    </div>
+                    <div class="lightbox-actions">
+                        <a id="lightboxFullImageBtn" href="" target="_blank" class="btn btn-secondary">
+                            <i class="fas fa-external-link-alt"></i> Open Full High-Res
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js?v=7"></script>
 </body>
 </html>

@@ -311,3 +311,382 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// ==================================================
+// GRAPHIC DESIGN SHOWCASE & SLIDER LOGIC
+// ==================================================
+function initDesignGallery() {
+    const sliderViewport = document.getElementById('designSliderViewport');
+    const sliderTrack = document.getElementById('designSliderTrack');
+    const prevBtn = document.getElementById('designPrevBtn');
+    const nextBtn = document.getElementById('designNextBtn');
+    const progressBar = document.getElementById('designProgressBar');
+    const dotsContainer = document.getElementById('designDotsContainer');
+    const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+    const allCards = Array.from(document.querySelectorAll('.design-card'));
+
+    if (!sliderViewport || !sliderTrack || allCards.length === 0) return;
+
+    let currentIndex = 0;
+    let activeFilter = 'all';
+    let visibleCards = [...allCards];
+    let isAutoplay = true;
+    let autoplayInterval = null;
+    let isDragging = false;
+    let startX = 0;
+    let currentX = 0;
+    let movedBy = 0;
+    let lightboxCurrentIndex = 0;
+
+    // Helper: Calculate visible card count
+    function getVisibleCardsCount() {
+        const width = window.innerWidth;
+        if (width <= 640) return 1;
+        if (width <= 1024) return 2;
+        return 3;
+    }
+
+    // Helper: Maximum slide index
+    function getMaxIndex() {
+        const visiblePerView = getVisibleCardsCount();
+        return Math.max(0, visibleCards.length - visiblePerView);
+    }
+
+    // Update Slider Position & Indicators
+    function updateSlider(animate = true) {
+        const maxIdx = getMaxIndex();
+        if (currentIndex > maxIdx) currentIndex = maxIdx;
+        if (currentIndex < 0) currentIndex = 0;
+
+        if (!animate) {
+            sliderTrack.style.transition = 'none';
+        } else {
+            sliderTrack.style.transition = 'transform 0.55s cubic-bezier(0.2, 0.9, 0.3, 1)';
+        }
+
+        if (visibleCards.length === 0) {
+            sliderTrack.style.transform = `translateX(0px)`;
+            return;
+        }
+
+        const firstCard = visibleCards[0];
+        const cardWidth = firstCard.getBoundingClientRect().width;
+        const gap = parseFloat(window.getComputedStyle(sliderTrack).gap) || 24;
+        const offset = currentIndex * (cardWidth + gap);
+
+        sliderTrack.style.transform = `translateX(-${offset}px)`;
+
+        // Update Prev / Next Buttons
+        if (prevBtn) prevBtn.disabled = (maxIdx === 0);
+        if (nextBtn) nextBtn.disabled = (maxIdx === 0);
+
+        // Update Progress Bar
+        if (progressBar) {
+            const totalSteps = maxIdx + 1;
+            const percentage = totalSteps > 1 ? ((currentIndex + 1) / totalSteps) * 100 : 100;
+            progressBar.style.width = `${percentage}%`;
+        }
+
+        // Update Dots
+        updateDots();
+    }
+
+    // Generate & Update Pagination Dots
+    function updateDots() {
+        if (!dotsContainer) return;
+        const maxIdx = getMaxIndex();
+        const totalDots = maxIdx + 1;
+
+        if (dotsContainer.children.length !== totalDots) {
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < totalDots; i++) {
+                const dot = document.createElement('button');
+                dot.className = `design-dot ${i === currentIndex ? 'active' : ''}`;
+                dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+                dot.addEventListener('click', () => {
+                    currentIndex = i;
+                    updateSlider();
+                    resetAutoplayTimer();
+                });
+                dotsContainer.appendChild(dot);
+            }
+        } else {
+            Array.from(dotsContainer.children).forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentIndex);
+            });
+        }
+    }
+
+    // Navigation Actions
+    function slideNext() {
+        const maxIdx = getMaxIndex();
+        if (currentIndex < maxIdx) {
+            currentIndex++;
+        } else {
+            currentIndex = 0; // Loop back
+        }
+        updateSlider();
+    }
+
+    function slidePrev() {
+        if (currentIndex > 0) {
+            currentIndex--;
+        } else {
+            currentIndex = getMaxIndex(); // Loop to end
+        }
+        updateSlider();
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            slideNext();
+            resetAutoplayTimer();
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            slidePrev();
+            resetAutoplayTimer();
+        });
+    }
+
+    // Filter Functionality
+    function applyFilter(category) {
+        activeFilter = category;
+        currentIndex = 0;
+
+        allCards.forEach(card => {
+            const cardCategory = card.getAttribute('data-category');
+            if (category === 'all' || cardCategory === category) {
+                card.classList.remove('is-hidden');
+            } else {
+                card.classList.add('is-hidden');
+            }
+        });
+
+        visibleCards = allCards.filter(c => !c.classList.contains('is-hidden'));
+
+        // Regenerate dots for the new card count
+        dotsContainer.innerHTML = '';
+        updateSlider();
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const category = btn.getAttribute('data-filter');
+            applyFilter(category);
+            resetAutoplayTimer();
+        });
+    });
+
+    // Autoplay Controls (Continuous Auto-Slide)
+    function startAutoplay() {
+        if (autoplayInterval) clearInterval(autoplayInterval);
+        autoplayInterval = setInterval(() => {
+            if (!isDragging) {
+                slideNext();
+            }
+        }, 3500);
+    }
+
+    function stopAutoplay() {
+        if (autoplayInterval) {
+            clearInterval(autoplayInterval);
+            autoplayInterval = null;
+        }
+    }
+
+    function resetAutoplayTimer() {
+        startAutoplay();
+    }
+
+    // Pause Autoplay on Hover so user can inspect, resume on leave
+    sliderViewport.addEventListener('mouseenter', stopAutoplay);
+    sliderViewport.addEventListener('mouseleave', () => {
+        if (!isDragging) startAutoplay();
+    });
+
+    // Touch & Mouse Drag / Swipe
+    function onDragStart(e) {
+        isDragging = true;
+        sliderViewport.classList.add('is-dragging');
+        startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        currentX = startX;
+        movedBy = 0;
+    }
+
+    function onDragMove(e) {
+        if (!isDragging) return;
+        currentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        movedBy = currentX - startX;
+    }
+
+    function onDragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        sliderViewport.classList.remove('is-dragging');
+
+        // Check swipe distance
+        const threshold = 45;
+        if (movedBy < -threshold) {
+            slideNext();
+        } else if (movedBy > threshold) {
+            slidePrev();
+        }
+        movedBy = 0;
+        resetAutoplayTimer();
+    }
+
+    sliderViewport.addEventListener('mousedown', onDragStart);
+    sliderViewport.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mouseup', onDragEnd);
+
+    sliderViewport.addEventListener('touchstart', onDragStart, { passive: true });
+    sliderViewport.addEventListener('touchmove', onDragMove, { passive: true });
+    window.addEventListener('touchend', onDragEnd);
+
+    // 3D Tilt Effect on Desktop
+    allCards.forEach(card => {
+        const inner = card.querySelector('.design-card-inner');
+        if (!inner) return;
+
+        card.addEventListener('mousemove', (e) => {
+            if (window.innerWidth <= 1024) return;
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -8;
+            const rotateY = ((x - centerX) / centerX) * 8;
+            inner.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            inner.style.transform = '';
+        });
+    });
+
+    // Lightbox Modal Logic
+    const lightbox = document.getElementById('designLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxCategory = document.getElementById('lightboxCategory');
+    const lightboxClient = document.getElementById('lightboxClient');
+    const lightboxDesc = document.getElementById('lightboxDesc');
+    const lightboxTools = document.getElementById('lightboxTools');
+    const lightboxFullBtn = document.getElementById('lightboxFullImageBtn');
+    const lightboxClose = document.getElementById('lightboxCloseBtn');
+    const lightboxBackdrop = document.getElementById('lightboxBackdrop');
+    const lightboxPrev = document.getElementById('lightboxPrevBtn');
+    const lightboxNext = document.getElementById('lightboxNextBtn');
+
+    function openLightbox(index) {
+        if (!lightbox || visibleCards.length === 0) return;
+        lightboxCurrentIndex = index;
+        const card = visibleCards[lightboxCurrentIndex] || visibleCards[0];
+        if (!card) return;
+
+        const title = card.getAttribute('data-title') || '';
+        const categoryLabel = card.getAttribute('data-category-label') || '';
+        const client = card.getAttribute('data-client') || '';
+        const imgUrl = card.getAttribute('data-image') || '';
+        const tools = (card.getAttribute('data-tools') || '').split(',').map(t => t.trim());
+        const desc = card.getAttribute('data-desc') || '';
+
+        if (lightboxImg) lightboxImg.src = imgUrl;
+        if (lightboxTitle) lightboxTitle.textContent = title;
+        if (lightboxCategory) lightboxCategory.textContent = categoryLabel;
+        if (lightboxClient) {
+            const clientSpan = lightboxClient.querySelector('span');
+            if (clientSpan) clientSpan.textContent = client;
+        }
+        if (lightboxDesc) lightboxDesc.textContent = desc;
+        if (lightboxFullBtn) lightboxFullBtn.href = imgUrl;
+
+        if (lightboxTools) {
+            lightboxTools.innerHTML = '';
+            tools.forEach(tool => {
+                if (tool) {
+                    const badge = document.createElement('span');
+                    badge.className = 'design-tool-badge';
+                    badge.textContent = tool;
+                    lightboxTools.appendChild(badge);
+                }
+            });
+        }
+
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        stopAutoplay();
+    }
+
+    function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        startAutoplay();
+    }
+
+    function lightboxNavigate(direction) {
+        if (visibleCards.length === 0) return;
+        if (direction === 'next') {
+            lightboxCurrentIndex = (lightboxCurrentIndex + 1) % visibleCards.length;
+        } else {
+            lightboxCurrentIndex = (lightboxCurrentIndex - 1 + visibleCards.length) % visibleCards.length;
+        }
+        openLightbox(lightboxCurrentIndex);
+    }
+
+    // Attach click events to design cards
+    allCards.forEach((card) => {
+        const handleCardOpen = (e) => {
+            // Prevent trigger if dragging
+            if (Math.abs(movedBy) > 10) return;
+            const visibleIdx = visibleCards.indexOf(card);
+            if (visibleIdx !== -1) {
+                openLightbox(visibleIdx);
+            }
+        };
+
+        card.addEventListener('click', handleCardOpen);
+    });
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    if (lightboxBackdrop) lightboxBackdrop.addEventListener('click', closeLightbox);
+    if (lightboxPrev) lightboxPrev.addEventListener('click', () => lightboxNavigate('prev'));
+    if (lightboxNext) lightboxNext.addEventListener('click', () => lightboxNavigate('next'));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (lightbox && lightbox.classList.contains('is-open')) {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') lightboxNavigate('next');
+            if (e.key === 'ArrowLeft') lightboxNavigate('prev');
+        }
+    });
+
+    // Window Resize Handler with Debounce
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            updateSlider(false);
+        }, 150);
+    });
+
+    // Initialize
+    updateSlider(false);
+    startAutoplay();
+}
+
+// Initialize gallery on DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    initDesignGallery();
+});
+
