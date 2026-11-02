@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio - Dimuthu Shalinda</title>
-    <link rel="stylesheet" href="assets/css/style.css?v=7">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Antonio:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css?v=9">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -39,31 +42,101 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">Hi, I'm <span class="highlight">Dimuthu Shalinda</span></h1>
-                <h2 class="hero-subtitle">I'm a <span id="roleText" class="typing">Full Stack Developer & Creative Designer</span></h2>
-                <p class="hero-description">
-                    I build exceptional digital experiences that combine beautiful design with powerful functionality.
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary smooth-scroll">View My Work</a>
-                    <a href="#contact" class="btn btn-secondary smooth-scroll">Get In Touch</a>
+        <div class="hero-wrapper">
+            <!-- Top Meta Bar -->
+            <div class="hero-top-bar">
+                <div class="hero-top-role">
+                    <span class="top-role-primary">FULL STACK DEVELOPER</span>
+                    <span class="top-role-secondary">CREATIVE DESIGNER</span>
+                </div>
+                <div class="hero-top-status">
+                    <span class="status-label">AVAILABLE FOR FREELANCE</span>
+                    <span class="status-sparkle" aria-label="Available for freelance">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                            <path d="M12 1L14.5 9.5L23 12L14.5 14.5L12 23L9.5 14.5L1 12L9.5 9.5L12 1Z" />
+                        </svg>
+                    </span>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="profile-hexagon">
-                    <div class="hexagon-border"></div>
-                    <div class="hexagon-inner">
-                        <img src="assets/images/hero.jpeg" alt="Dimuthu Shalinda" class="hero-photo" loading="lazy">
+
+            <!-- Main Hero Stage -->
+            <div class="hero-stage">
+                <!-- Decorative Giant Background Text -->
+                <div class="hero-bg-word" aria-hidden="true">PORTFOLIO</div>
+
+                <!-- Center-Bottom Cut-Out Person Photo -->
+                <div class="hero-person-wrap">
+                    <div class="hero-person-glow" aria-hidden="true"></div>
+                    <img
+                        src="assets/images/newhero.png?v=2"
+                        alt="Dimuthu Shalinda - Full Stack Developer and Creative Designer"
+                        width="860"
+                        height="1000"
+                        class="hero-photo hero-cutout-photo"
+                        fetchpriority="high"
+                    >
+                </div>
+
+                <!-- Foreground Content Columns -->
+                <div class="hero-content">
+                    <!-- Left-Bottom Block -->
+                    <div class="hero-text hero-left-block">
+                        <p class="hero-greeting">Hello, I'm</p>
+                        <h1 class="hero-title">
+                            <span class="hero-name-line">DIMUTHU</span>
+                            <span class="hero-name-line">SHALINDA</span>
+                        </h1>
+                        <h2 class="hero-subtitle">
+                            FULL STACK DEVELOPER &amp;<br>CREATIVE DESIGNER
+                        </h2>
+                        <p class="hero-description">
+                            I build exceptional digital experiences that combine beautiful design with powerful functionality.
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#projects" class="btn btn-primary smooth-scroll">View My Work</a>
+                            <a href="#contact" class="btn btn-secondary smooth-scroll">Get In Touch</a>
+                        </div>
+                        <div class="hero-worldwide">
+                            <span class="worldwide-icon" aria-label="Available worldwide">
+                                <i class="fas fa-globe" aria-hidden="true"></i>
+                            </span>
+                            <span class="worldwide-text">AVAILABLE WORLDWIDE</span>
+                        </div>
+                    </div>
+
+                    <!-- Center Spacer for Grid Alignment on Desktop -->
+                    <div class="hero-center-spacer" aria-hidden="true"></div>
+
+                    <!-- Right-Middle & Bottom-Right Block -->
+                    <div class="hero-right-block">
+                        <div class="hero-tagline-card">
+                            <div class="sparkle-badge" aria-label="Sparkle icon">
+                                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z" />
+                                </svg>
+                            </div>
+                            <p class="hero-tagline-text">
+                                Turning ideas<br>into powerful<br>digital experiences.
+                            </p>
+                        </div>
+
+                        <div class="hero-stats" id="heroStats" aria-label="Key career statistics">
+                            <div class="hero-stat-item">
+                                <span class="hero-stat-num">3+</span>
+                                <span class="hero-stat-label">YEARS<br>EXPERIENCE</span>
+                            </div>
+                            <div class="hero-stat-item">
+                                <span class="hero-stat-num">40+</span>
+                                <span class="hero-stat-label">PROJECTS<br>COMPLETED</span>
+                            </div>
+                            <div class="hero-stat-item">
+                                <span class="hero-stat-num">20+</span>
+                                <span class="hero-stat-label">HAPPY<br>CLIENTS</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <a href="#about" class="smooth-scroll">
-                <i class="fas fa-chevron-down"></i>
-            </a>
         </div>
     </section>
 

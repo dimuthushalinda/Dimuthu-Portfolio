@@ -159,10 +159,32 @@ contactForm.addEventListener("submit", async e => {
 });
 
 // ==================================================
+// HERO STATS CONFIG (EDIT VALUES IN ONE PLACE)
+// ==================================================
+const HERO_STATS = [
+    { value: "3+", labelLine1: "YEARS", labelLine2: "EXPERIENCE" },
+    { value: "40+", labelLine1: "PROJECTS", labelLine2: "COMPLETED" },
+    { value: "20+", labelLine1: "HAPPY", labelLine2: "CLIENTS" }
+];
+
+function renderHeroStats() {
+    const statsContainer = document.getElementById("heroStats");
+    if (!statsContainer || !Array.isArray(HERO_STATS)) return;
+
+    statsContainer.innerHTML = HERO_STATS.map(stat => `
+        <div class="hero-stat-item">
+            <span class="hero-stat-num">${stat.value}</span>
+            <span class="hero-stat-label">${stat.labelLine1}<br>${stat.labelLine2}</span>
+        </div>
+    `).join("");
+}
+
+// ==================================================
 // INITIALIZE EVERYTHING
 // ==================================================
 document.addEventListener("DOMContentLoaded", () => {
     initTheme();
+    renderHeroStats();
     initStatsCounter();
     console.log("🚀 Portfolio Loaded Successfully!");
 });
