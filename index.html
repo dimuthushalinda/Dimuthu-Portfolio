@@ -6,8 +6,8 @@
     <title>My Portfolio - Dimuthu Shalinda</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Antonio:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css?v=9">
+    <link href="https://fonts.googleapis.com/css2?family=Allura&family=Antonio:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css?v=24">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -23,6 +23,7 @@
                     <li><a href="#about" class="nav-link">About</a></li>
                     <li><a href="#services" class="nav-link">Services</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#designs" class="nav-link">Designs</a></li>
                     <li><a href="#blog" class="nav-link">Blog</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
@@ -145,48 +146,94 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Services</h2>
-            <p class="section-subtitle">What I can help you build</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-laptop-code service-icon"></i>
-                    <h3>Web Development</h3>
-                    <p>Full-stack web applications using modern frameworks and clean architecture.</p>
+            <div class="services-showcase" id="servicesShowcase">
+                <!-- Top Header Area (Matches Reference Layout) -->
+                <div class="services-top-row">
+                    <div class="services-heading-group">
+                        <h2 class="services-big-title">
+                            <span class="services-title-bold">ALL YOUR</span>
+                            <span class="services-title-italic">design &amp; dev needs</span>
+                        </h2>
+                    </div>
+                    <div class="services-cta-group">
+                        <p class="services-cta-desc">
+                            All types of development and design services in one place with the assurance of highest excellence, scalability, and usability.
+                        </p>
+                        <a href="#contact" class="services-book-btn smooth-scroll">
+                            BOOK A CALL
+                        </a>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-paint-brush service-icon"></i>
-                    <h3>UI/UX Design</h3>
-                    <p>Design systems, responsive interfaces, and user-centred experiences.</p>
+
+                <!-- Interactive Selected Service Info Bar (Appears when a pill is clicked) -->
+                <div class="service-active-banner" id="serviceActiveBanner" aria-live="polite">
+                    <div class="service-banner-info">
+                        <span class="service-banner-icon" id="serviceBannerIcon"><i class="fas fa-laptop-code"></i></span>
+                        <div class="service-banner-text">
+                            <h3 id="serviceBannerTitle">Web Development</h3>
+                            <p id="serviceBannerDesc">Full-stack web applications using Next.js, React, Laravel, and clean architecture.</p>
+                        </div>
+                    </div>
+                    <div class="service-banner-actions">
+                        <a href="#contact" class="service-inquire-btn smooth-scroll" id="serviceInquireBtn">
+                            Request This Service <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <button type="button" class="service-banner-close" id="serviceBannerClose" aria-label="Close service details">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <i class="fas fa-server service-icon"></i>
-                    <h3>Backend & APIs</h3>
-                    <p>Robust backend, REST/GraphQL APIs, and database design.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-tachometer-alt service-icon"></i>
-                    <h3>Performance Optimization</h3>
-                    <p>Improve site speed, bundle optimization, and runtime performance tuning.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-cloud service-icon"></i>
-                    <h3>DevOps & Deployment</h3>
-                    <p>CI/CD pipelines, containerization, and deployment to cloud platforms.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-tools service-icon"></i>
-                    <h3>Consulting & Strategy</h3>
-                    <p>Technical guidance, architecture reviews, and product strategy sessions.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-mobile-alt service-icon"></i>
-                    <h3>Mobile App Development</h3>
-                    <p>Cross-platform mobile apps with React Native or Flutter and native integrations.</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-shopping-cart service-icon"></i>
-                    <h3>E‑commerce Solutions</h3>
-                    <p>Storefronts, payments, and catalog systems optimized for conversions.</p>
+
+                <!-- Physics / Balloon Falling Pills Stage -->
+                <div class="services-pile-stage" id="servicesPileStage" aria-label="Interactive portfolio services">
+                    <button type="button" class="service-pill" data-service="Web Development" data-icon="fa-laptop-code" data-desc="Full-stack web applications using Next.js, React, TypeScript, and clean scalable architecture.">
+                        <span>Web Development</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="UI/UX Design" data-icon="fa-paint-brush" data-desc="Modern design systems, wireframes, responsive interfaces, and user-centered digital experiences.">
+                        <span>UI/UX Design</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="Mobile Apps" data-icon="fa-mobile-alt" data-desc="Cross-platform iOS & Android mobile apps built with React Native and Flutter with smooth native feel.">
+                        <span>Mobile Apps</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="AI Integration" data-icon="fa-robot" data-desc="Smart AI-powered web platforms, LLM integrations, chatbots, and automated workflows.">
+                        <span>AI Integration</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="Landing Pages" data-icon="fa-rocket" data-desc="High-converting, fast, animated landing pages tailored to elevate your brand and product.">
+                        <span>Landing Pages</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="Backend & APIs" data-icon="fa-server" data-desc="Secure REST/GraphQL APIs, Supabase, Node.js, NestJS, Laravel, and SQL/NoSQL database design.">
+                        <span>Backend &amp; APIs</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="Brand & Logos" data-icon="fa-pen-nib" data-desc="Memorable brand identities, logos, posters, and marketing visuals crafted in Photoshop & Illustrator.">
+                        <span>Brand &amp; Logos</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="E-Commerce" data-icon="fa-shopping-cart" data-desc="Custom online storefronts, secure payment gateways, and product catalogs optimized for sales.">
+                        <span>E-Commerce</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="DevOps & Cloud" data-icon="fa-cloud" data-desc="CI/CD pipelines, containerization, cloud hosting, and production performance optimization.">
+                        <span>DevOps &amp; Cloud</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="Custom Software" data-icon="fa-code" data-desc="End-to-end custom software solutions, dashboards, and SaaS products tailored to your business.">
+                        <span>Custom Software</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="Full-Stack Apps" data-icon="fa-layer-group" data-desc="Complete end-to-end web applications built with React, Next.js, NestJS, Laravel, and Supabase.">
+                        <span>Full-Stack Apps</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="SaaS Platforms" data-icon="fa-cubes" data-desc="Multi-tenant SaaS architectures with authentication, subscriptions, analytics, and cloud scaling.">
+                        <span>SaaS Platforms</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="Database Design" data-icon="fa-database" data-desc="Optimized SQL & NoSQL database schemas, indexing, migrations, and real-time data synchronization.">
+                        <span>Database Design</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="API Integration" data-icon="fa-plug" data-desc="Seamless third-party API integrations including Stripe, OpenAI, Supabase, and custom webhooks.">
+                        <span>API Integration</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="Performance Tuning" data-icon="fa-tachometer-alt" data-desc="Core Web Vitals optimization, bundle reduction, caching strategies, and fast page load speeds.">
+                        <span>Performance Tuning</span>
+                    </button>
+                    <button type="button" class="service-pill" data-service="Graphic Design" data-icon="fa-palette" data-desc="Professional posters, social media creatives, product labels, and visual assets using Photoshop & Illustrator.">
+                        <span>Graphic Design</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -209,83 +256,245 @@
                         <b>When I'm not coding, you can find me exploring new technologies, contributing to open source, 
                         or sharing my knowledge through blog posts and tutorials.</b>
                     </p>
-                    <div class="education">
-                        <h4><i class="fas fa-graduation-cap"></i> Education</h4>
-                        <p><strong>Advanced Technological Institute</strong></p>
-                        <p>Univercity Name | 2024 Aug - 2026 Jul</p><br>
-                        <p><strong>Mahinda College Galle</strong></p>
-                        <p>School Name | 2019 Feb - 2021 Nov</p><br>
-                        <p><strong>G/Vidyananda Vidyalaya Galle</strong></p>
-                        <p>School Name | 2005 - 2018 </p>
-                    </div>
-                    <a href="assets/resume.pdf" download class="btn btn-primary">
+                    <a href="assets/resume.pdf" download class="btn btn-primary about-resume-btn">
                         <i class="fas fa-download"></i> Download Resume
                     </a>
                 </div>
-                <div class="skills">
+                <div class="about-education-col">
+                    <div class="education">
+                        <h4><i class="fas fa-graduation-cap"></i> Education</h4>
+                        <div class="edu-item">
+                            <p><strong>Advanced Technological Institute</strong></p>
+                            <p class="edu-meta">HNDIT | 2024 Aug - 2026 Jul</p>
+                        </div>
+                        <div class="edu-item">
+                            <p><strong>Mahinda College Galle</strong></p>
+                            <p class="edu-meta">Secondary Education | 2019 Feb - 2021 Nov</p>
+                        </div>
+                        <div class="edu-item">
+                            <p><strong>G/Vidyananda Vidyalaya Galle</strong></p>
+                            <p class="edu-meta">Primary &amp; Junior School | 2005 - 2018</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Skills Circular Ring Showcase -->
+            <div class="skills" id="skillsSection">
+                <div class="skills-header-block">
                     <h3>My Skills</h3>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span><i class="fab fa-html5"></i> HTML/CSS</span>
-                            <span>90%</span>
+                    <p>Technologies, frameworks, and creative tools I use to build digital products</p>
+                </div>
+
+                <!-- Shared SVG Gradient Definition for Skill Rings -->
+                <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="skillRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#66ffa6" />
+                            <stop offset="55%" stop-color="#00e676" />
+                            <stop offset="100%" stop-color="#00b248" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+
+                <div class="skills-rings-grid">
+                    <!-- 1. React & Next.js -->
+                    <div class="skill-ring-item" data-percent="90">
+                        <div class="skill-ring-circle">
+                            <svg class="skill-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="skill-ring-track" cx="60" cy="60" r="52"></circle>
+                                <circle class="skill-ring-progress" cx="60" cy="60" r="52"></circle>
+                            </svg>
+                            <div class="skill-logo-disc" style="--logo-bg: radial-gradient(circle, #0d2838 0%, #07131c 100%); --logo-glow: rgba(0, 216, 255, 0.25);">
+                                <svg viewBox="0 0 64 64" width="44" height="44" fill="none" aria-hidden="true">
+                                    <circle cx="32" cy="32" r="5.5" fill="#00d8ff"/>
+                                    <ellipse cx="32" cy="32" rx="24" ry="9.5" stroke="#00d8ff" stroke-width="2.8"/>
+                                    <ellipse cx="32" cy="32" rx="24" ry="9.5" transform="rotate(60 32 32)" stroke="#00d8ff" stroke-width="2.8"/>
+                                    <ellipse cx="32" cy="32" rx="24" ry="9.5" transform="rotate(120 32 32)" stroke="#00d8ff" stroke-width="2.8"/>
+                                </svg>
+                            </div>
+                            <span class="skill-percent-pill">90%</span>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
+                        <span class="skill-ring-name">React &amp;<br>Next.js</span>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span><i class="fab fa-html5"></i> Laravel</span>
-                            <span>85%</span>
+
+                    <!-- 2. JavaScript -->
+                    <div class="skill-ring-item" data-percent="88">
+                        <div class="skill-ring-circle">
+                            <svg class="skill-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="skill-ring-track" cx="60" cy="60" r="52"></circle>
+                                <circle class="skill-ring-progress" cx="60" cy="60" r="52"></circle>
+                            </svg>
+                            <div class="skill-logo-disc" style="--logo-bg: radial-gradient(circle, #332b00 0%, #171402 100%); --logo-glow: rgba(247, 223, 30, 0.25);">
+                                <span class="skill-monogram" style="color: #f7df1e;">JS</span>
+                            </div>
+                            <span class="skill-percent-pill">88%</span>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
+                        <span class="skill-ring-name">JavaScript<br>(ES6+)</span>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span><i class="fab fa-js"></i> JavaScript</span>
-                            <span>85%</span>
+
+                    <!-- 3. TypeScript -->
+                    <div class="skill-ring-item" data-percent="85">
+                        <div class="skill-ring-circle">
+                            <svg class="skill-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="skill-ring-track" cx="60" cy="60" r="52"></circle>
+                                <circle class="skill-ring-progress" cx="60" cy="60" r="52"></circle>
+                            </svg>
+                            <div class="skill-logo-disc" style="--logo-bg: radial-gradient(circle, #0a2540 0%, #061322 100%); --logo-glow: rgba(49, 120, 198, 0.3);">
+                                <span class="skill-monogram" style="color: #3178c6;">TS</span>
+                            </div>
+                            <span class="skill-percent-pill">85%</span>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
+                        <span class="skill-ring-name">TypeScript</span>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span><i class="fab fa-react"></i> React</span>
-                            <span>90%</span>
+
+                    <!-- 4. HTML5 & CSS3 -->
+                    <div class="skill-ring-item" data-percent="92">
+                        <div class="skill-ring-circle">
+                            <svg class="skill-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="skill-ring-track" cx="60" cy="60" r="52"></circle>
+                                <circle class="skill-ring-progress" cx="60" cy="60" r="52"></circle>
+                            </svg>
+                            <div class="skill-logo-disc" style="--logo-bg: radial-gradient(circle, #361509 0%, #180904 100%); --logo-glow: rgba(227, 79, 38, 0.25);">
+                                <svg viewBox="0 0 64 64" width="42" height="42" fill="none" aria-hidden="true">
+                                    <path d="M12 10H52L48.4 48.2L32 54L15.6 48.2L12 10Z" stroke="#ff5722" stroke-width="3" fill="rgba(255,87,34,0.12)"/>
+                                    <path d="M21 22H43L42 32H23L24 41L32 43.5L40 41L40.6 35" stroke="#ff8a65" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="skill-percent-pill">92%</span>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
+                        <span class="skill-ring-name">HTML5 &amp;<br>CSS3</span>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span><i class="fab fa-node"></i> Node.js</span>
-                            <span>75%</span>
+
+                    <!-- 5. Tailwind CSS -->
+                    <div class="skill-ring-item" data-percent="90">
+                        <div class="skill-ring-circle">
+                            <svg class="skill-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="skill-ring-track" cx="60" cy="60" r="52"></circle>
+                                <circle class="skill-ring-progress" cx="60" cy="60" r="52"></circle>
+                            </svg>
+                            <div class="skill-logo-disc" style="--logo-bg: radial-gradient(circle, #062c38 0%, #04151c 100%); --logo-glow: rgba(56, 189, 248, 0.28);">
+                                <svg viewBox="0 0 64 64" width="44" height="44" fill="none" aria-hidden="true">
+                                    <path d="M18 27C20.4 19.5 25.2 16 32 16C40.5 16 42.6 22.4 47.4 23.6C50.6 24.4 53.4 23.2 55.5 20.5C53.1 28 48.3 31.5 41.5 31.5C33 31.5 30.9 25.1 26.1 23.9C22.9 23.1 20.1 24.3 18 27ZM10.5 39.5C12.9 32 17.7 28.5 24.5 28.5C33 28.5 35.1 34.9 39.9 36.1C43.1 36.9 45.9 35.7 48 33C45.6 40.5 40.8 44 34 44C25.5 44 23.4 37.6 18.6 36.4C15.4 35.6 12.6 36.8 10.5 39.5Z" fill="#38bdf8"/>
+                                </svg>
+                            </div>
+                            <span class="skill-percent-pill">90%</span>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%"></div>
-                        </div>
+                        <span class="skill-ring-name">Tailwind<br>CSS</span>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span><i class="fas fa-database"></i> Database (SQL/NoSQL)</span>
-                            <span>80%</span>
+
+                    <!-- 6. Laravel -->
+                    <div class="skill-ring-item" data-percent="85">
+                        <div class="skill-ring-circle">
+                            <svg class="skill-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="skill-ring-track" cx="60" cy="60" r="52"></circle>
+                                <circle class="skill-ring-progress" cx="60" cy="60" r="52"></circle>
+                            </svg>
+                            <div class="skill-logo-disc" style="--logo-bg: radial-gradient(circle, #380d0b 0%, #180605 100%); --logo-glow: rgba(255, 45, 32, 0.28);">
+                                <svg viewBox="0 0 64 64" width="42" height="42" fill="none" aria-hidden="true">
+                                    <path d="M14 22L26 15L38 22V36L26 43L14 36V22Z" stroke="#ff2d20" stroke-width="2.8" stroke-linejoin="round"/>
+                                    <path d="M38 26L48 20L54 24V37L38 47L26 40" stroke="#ff2d20" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14 22L26 29L38 22M26 29V43" stroke="#ff6b60" stroke-width="2.4" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="skill-percent-pill">85%</span>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
+                        <span class="skill-ring-name">Laravel &amp;<br>PHP</span>
                     </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span><i class="fab fa-python"></i> Python</span>
-                            <span>65%</span>
+
+                    <!-- 7. Node.js & NestJS -->
+                    <div class="skill-ring-item" data-percent="80">
+                        <div class="skill-ring-circle">
+                            <svg class="skill-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="skill-ring-track" cx="60" cy="60" r="52"></circle>
+                                <circle class="skill-ring-progress" cx="60" cy="60" r="52"></circle>
+                            </svg>
+                            <div class="skill-logo-disc" style="--logo-bg: radial-gradient(circle, #0f2e16 0%, #07160a 100%); --logo-glow: rgba(104, 160, 99, 0.3);">
+                                <svg viewBox="0 0 64 64" width="42" height="42" fill="none" aria-hidden="true">
+                                    <path d="M32 10L51 21V43L32 54L13 43V21L32 10Z" stroke="#68a063" stroke-width="3" fill="rgba(104,160,99,0.14)"/>
+                                    <text x="32" y="37" text-anchor="middle" fill="#8cc84b" font-family="Poppins, sans-serif" font-weight="700" font-size="15">JS</text>
+                                </svg>
+                            </div>
+                            <span class="skill-percent-pill">80%</span>
                         </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 65%"></div>
+                        <span class="skill-ring-name">Node.js &amp;<br>NestJS</span>
+                    </div>
+
+                    <!-- 8. Supabase & SQL -->
+                    <div class="skill-ring-item" data-percent="85">
+                        <div class="skill-ring-circle">
+                            <svg class="skill-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="skill-ring-track" cx="60" cy="60" r="52"></circle>
+                                <circle class="skill-ring-progress" cx="60" cy="60" r="52"></circle>
+                            </svg>
+                            <div class="skill-logo-disc" style="--logo-bg: radial-gradient(circle, #063020 0%, #041710 100%); --logo-glow: rgba(62, 207, 142, 0.32);">
+                                <svg viewBox="0 0 64 64" width="42" height="42" fill="none" aria-hidden="true">
+                                    <path d="M35.5 11L15 36.5H31L28.5 53L49 27.5H33L35.5 11Z" fill="#3ecf8e" stroke="#66ffa6" stroke-width="1.5" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span class="skill-percent-pill">85%</span>
                         </div>
+                        <span class="skill-ring-name">Supabase &amp;<br>SQL / NoSQL</span>
+                    </div>
+
+                    <!-- 9. Python & AI APIs -->
+                    <div class="skill-ring-item" data-percent="75">
+                        <div class="skill-ring-circle">
+                            <svg class="skill-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="skill-ring-track" cx="60" cy="60" r="52"></circle>
+                                <circle class="skill-ring-progress" cx="60" cy="60" r="52"></circle>
+                            </svg>
+                            <div class="skill-logo-disc" style="--logo-bg: radial-gradient(circle, #112438 0%, #08121c 100%); --logo-glow: rgba(55, 118, 171, 0.3);">
+                                <span class="skill-monogram" style="background: linear-gradient(135deg, #387eb8 45%, #ffe052 100%); -webkit-background-clip: text; background-clip: text; color: transparent;">Py</span>
+                            </div>
+                            <span class="skill-percent-pill">75%</span>
+                        </div>
+                        <span class="skill-ring-name">Python &amp;<br>FastAPI</span>
+                    </div>
+
+                    <!-- 10. React Native -->
+                    <div class="skill-ring-item" data-percent="80">
+                        <div class="skill-ring-circle">
+                            <svg class="skill-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="skill-ring-track" cx="60" cy="60" r="52"></circle>
+                                <circle class="skill-ring-progress" cx="60" cy="60" r="52"></circle>
+                            </svg>
+                            <div class="skill-logo-disc" style="--logo-bg: radial-gradient(circle, #161438 0%, #0b0a1c 100%); --logo-glow: rgba(97, 218, 251, 0.25);">
+                                <span class="skill-monogram" style="color: #61dafb;">RN</span>
+                            </div>
+                            <span class="skill-percent-pill">80%</span>
+                        </div>
+                        <span class="skill-ring-name">React Native<br>Mobile</span>
+                    </div>
+
+                    <!-- 11. Adobe Photoshop -->
+                    <div class="skill-ring-item" data-percent="88">
+                        <div class="skill-ring-circle">
+                            <svg class="skill-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="skill-ring-track" cx="60" cy="60" r="52"></circle>
+                                <circle class="skill-ring-progress" cx="60" cy="60" r="52"></circle>
+                            </svg>
+                            <div class="skill-logo-disc" style="--logo-bg: radial-gradient(circle, #001e36 0%, #000e1a 100%); --logo-glow: rgba(49, 168, 255, 0.3);">
+                                <span class="skill-monogram" style="color: #31a8ff;">Ps</span>
+                            </div>
+                            <span class="skill-percent-pill">88%</span>
+                        </div>
+                        <span class="skill-ring-name">Adobe<br>Photoshop</span>
+                    </div>
+
+                    <!-- 12. Adobe Illustrator -->
+                    <div class="skill-ring-item" data-percent="85">
+                        <div class="skill-ring-circle">
+                            <svg class="skill-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                                <circle class="skill-ring-track" cx="60" cy="60" r="52"></circle>
+                                <circle class="skill-ring-progress" cx="60" cy="60" r="52"></circle>
+                            </svg>
+                            <div class="skill-logo-disc" style="--logo-bg: radial-gradient(circle, #330000 0%, #1a0000 100%); --logo-glow: rgba(255, 154, 0, 0.3);">
+                                <span class="skill-monogram" style="color: #ff9a00;">Ai</span>
+                            </div>
+                            <span class="skill-percent-pill">85%</span>
+                        </div>
+                        <span class="skill-ring-name">Adobe<br>Illustrator</span>
                     </div>
                 </div>
             </div>
@@ -296,42 +505,101 @@
     <section class="experience" id="experience">
         <div class="container">
             <h2 class="section-title">Work Experience</h2>
-            <p class="section-subtitle">A snapshot of my recent professional roles</p>
-            <div class="experience-grid">
-                <div class="experience-card">
+            <p class="section-subtitle">Hover to pause &amp; preview — click any role to inspect full details</p>
+        </div>
+
+        <div class="experience-marquee-viewport" id="experienceMarqueeViewport">
+            <div class="experience-marquee-track" id="experienceMarqueeTrack">
+                <!-- Card 1 -->
+                <div class="experience-card" tabindex="0" role="button" aria-label="View details for Digital Marketing Advisor Intern at Peoples Bank"
+                    data-role="Digital Marketing Advisor Intern"
+                    data-company="Peoples Bank"
+                    data-period="April 2023 - Feb 2024"
+                    data-icon="fa-Chart-line"
+                    data-desc="Provided guidance on digital financial solutions, digital banking services, online banking setup, and mobile banking support while improving customer service and presentation skills."
+                    data-highlights="Guided customers through digital onboarding, online banking, and mobile app adoption.|Improved branch digital adoption efficiency through clear one-on-one consultations.|Developed strong client communication, problem-solving, and presentation skills."
+                    data-tags="Digital Banking,Customer Advisory,FinTech Onboarding,Communication">
+                    <div class="exp-card-top-badge">
+                        <span class="exp-period-pill"><i class="far fa-calendar-alt"></i> April 2023 - Feb 2024</span>
+                        <span class="exp-zoom-hint"><i class="fas fa-expand-alt"></i></span>
+                    </div>
                     <div class="experience-header">
                         <h3>Digital Marketing Advisor Intern</h3>
-  
-                    <h3><span>Peoples Bank</span></h3>
+                        <span class="exp-company-tag"><i class="fas fa-building"></i> Peoples Bank</span>
                     </div>
-                    <h3><span>April 2023 - Feb 2024</span></h3>
-                    <p>Provided guidance on digital financial solutions, digital banking services, online banking setup and mobile banking
-support. while improving customer service and presentation skills..</p>
+                    <p>Provided guidance on digital financial solutions, digital banking services, online banking setup and mobile banking support while improving customer service and presentation skills.</p>
+                    <div class="exp-card-footer">
+                        <span class="exp-click-prompt">Click to view details <i class="fas fa-arrow-right"></i></span>
+                    </div>
                 </div>
-                <div class="experience-card">
+
+                <!-- Card 2 -->
+                <div class="experience-card" tabindex="0" role="button" aria-label="View details for Full Stack Developer at Freelance Web Developer"
+                    data-role="Full Stack Developer"
+                    data-company="Freelance Web Developer"
+                    data-period="Jan 2024 - Present"
+                    data-icon="fa-laptop-code"
+                    data-desc="Designed and shipped full stack web applications and AI-powered platforms using Next.js, React, TypeScript, and Supabase, with hands-on experience in AI API integrations, responsive UI design, and backend development using NestJS and Laravel."
+                    data-highlights="Architected and delivered responsive full-stack web apps and SaaS platforms for global clients.|Integrated Gemini & Claude AI APIs, authentication, and real-time databases with Supabase.|Built scalable REST APIs and backend services using NestJS, Node.js, and Laravel."
+                    data-tags="Next.js,React,TypeScript,Supabase,NestJS,Laravel,AI APIs">
+                    <div class="exp-card-top-badge">
+                        <span class="exp-period-pill"><i class="far fa-calendar-alt"></i> Jan 2024 - Present</span>
+                        <span class="exp-zoom-hint"><i class="fas fa-expand-alt"></i></span>
+                    </div>
                     <div class="experience-header">
                         <h3>Full Stack Developer</h3>
-                        <h3><span>Freelance Web Developer</span></h3>
+                        <span class="exp-company-tag"><i class="fas fa-globe"></i> Freelance Web Developer</span>
                     </div>
-                    <h3>Jan 2024 - Present</h3>
                     <p>Designed and shipped full stack web applications and AI-powered platforms using Next.js, React, TypeScript, and Supabase, with hands-on experience in AI API integrations, responsive UI design, and backend development using NestJS and Laravel.</p>
+                    <div class="exp-card-footer">
+                        <span class="exp-click-prompt">Click to view details <i class="fas fa-arrow-right"></i></span>
+                    </div>
                 </div>
-                <div class="experience-card">
+
+                <!-- Card 3 -->
+                <div class="experience-card" tabindex="0" role="button" aria-label="View details for Graphic Designer at Curry Bowl Restaurant"
+                    data-role="Graphic Designer"
+                    data-company="Curry Bowl Restaurant (Croatia)"
+                    data-period="Apr 2026 - May 2026"
+                    data-icon="fa-palette"
+                    data-desc="Worked as a Graphic Designer at Curry Bowl Restaurant, Croatia, responsible for designing professional logos, posters, notices, and labels for the restaurant's branding and marketing needs using Adobe Photoshop, Adobe Illustrator, and CorelDraw."
+                    data-highlights="Created cohesive visual identity assets including logos, packaging labels, and promotional posters.|Designed high-impact print and social media marketing materials aligned with brand guidelines.|Delivered production-ready artwork using Adobe Photoshop, Illustrator, and CorelDraw."
+                    data-tags="Adobe Photoshop,Adobe Illustrator,CorelDraw,Brand Identity,Print Design">
+                    <div class="exp-card-top-badge">
+                        <span class="exp-period-pill"><i class="far fa-calendar-alt"></i> Apr 2026 - May 2026</span>
+                        <span class="exp-zoom-hint"><i class="fas fa-expand-alt"></i></span>
+                    </div>
                     <div class="experience-header">
                         <h3>Graphic Designer</h3>
-                        <h3><span>Curry Bowl Resturent
-                        </span></h3>
+                        <span class="exp-company-tag"><i class="fas fa-pen-nib"></i> Curry Bowl Restaurant</span>
                     </div>
-                    <h3>Apr 2026 - May 2026</h3>
                     <p>Worked as a Graphic Designer at Curry Bowl Restaurant, Croatia, responsible for designing professional logos, posters, notices, and labels for the restaurant's branding and marketing needs using Adobe Photoshop, Adobe Illustrator, and CorelDraw.</p>
+                    <div class="exp-card-footer">
+                        <span class="exp-click-prompt">Click to view details <i class="fas fa-arrow-right"></i></span>
+                    </div>
                 </div>
-                <div class="experience-card">
+
+                <!-- Card 4 -->
+                <div class="experience-card" tabindex="0" role="button" aria-label="View details for Intern Software Engineer at Enrich Arcane"
+                    data-role="Intern Software Engineer"
+                    data-company="Enrich Arcane"
+                    data-period="Sep 2026 - Present"
+                    data-icon="fa-code-branch"
+                    data-desc="Currently working as an Intern Software Engineer focusing on Mobile Development, Full-Stack Development, and DevOps. Learning new technologies and languages with modern AI Engineering techniques."
+                    data-highlights="Contributing to cross-platform mobile and full-stack web features in an agile engineering team.|Working with CI/CD pipelines, containerized deployments, and cloud DevOps workflows.|Applying modern AI-assisted software engineering practices for rapid, high-quality delivery."
+                    data-tags="Mobile Dev,Full-Stack,DevOps,AI Engineering,CI/CD">
+                    <div class="exp-card-top-badge">
+                        <span class="exp-period-pill"><i class="far fa-calendar-alt"></i> Sep 2026 - Present</span>
+                        <span class="exp-zoom-hint"><i class="fas fa-expand-alt"></i></span>
+                    </div>
                     <div class="experience-header">
                         <h3>Intern Software Engineer</h3>
-                        <h3><span>Enrich Arcane</span></h3>
+                        <span class="exp-company-tag"><i class="fas fa-microchip"></i> Enrich Arcane</span>
                     </div>
-                    <h3>Sep 2026 - Present</h3>
-                    <p>Currently working as a intern software engineer that focuses on Mobile Development, Full-Stack Development and DevOps. Learning new Technologies and Languages with modern Ai Engineering techniques.</p>
+                    <p>Currently working as an intern software engineer that focuses on Mobile Development, Full-Stack Development and DevOps. Learning new Technologies and Languages with modern AI Engineering techniques.</p>
+                    <div class="exp-card-footer">
+                        <span class="exp-click-prompt">Click to view details <i class="fas fa-arrow-right"></i></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -414,12 +682,104 @@ support. while improving customer service and presentation skills..</p>
         </div>
     </section>
 
+    <!-- Mid-Page Left-to-Right Color-Up / Outline Kinetic Typography Band -->
+    <section class="kinetic-ribbon-section" id="portfolioKineticBand" aria-label="Portfolio Highlights">
+        <div class="ribbon-speed-lines" aria-hidden="true"></div>
+
+        <!-- Floating DRAG cursor pill (matches reference screenshot) -->
+        <div class="ribbon-drag-badge" id="ribbonDragBadge" aria-hidden="true">
+            <span>DRAG</span>
+        </div>
+
+        <div class="kinetic-ribbon-viewport" id="kineticRibbonViewport">
+            <div class="kinetic-ribbon-track" id="kineticRibbonTrack">
+                <!-- Set 1 -->
+                <div class="ribbon-item">
+                    <span class="ribbon-phrase" data-text="Full Stack Architecture">Full Stack Architecture</span>
+                    <span class="ribbon-orb" aria-hidden="true"></span>
+                </div>
+                <div class="ribbon-item">
+                    <span class="ribbon-phrase" data-text="AI-Powered Platforms">AI-Powered Platforms</span>
+                    <span class="ribbon-orb" aria-hidden="true"></span>
+                </div>
+                <div class="ribbon-item">
+                    <span class="ribbon-phrase" data-text="Pixel-Perfect UI/UX">Pixel-Perfect UI/UX</span>
+                    <span class="ribbon-orb" aria-hidden="true"></span>
+                </div>
+                <div class="ribbon-item">
+                    <span class="ribbon-phrase" data-text="Scalable Web &amp; Mobile Apps">Scalable Web &amp; Mobile Apps</span>
+                    <span class="ribbon-orb" aria-hidden="true"></span>
+                </div>
+                <div class="ribbon-item">
+                    <span class="ribbon-phrase" data-text="Clean Code &amp; Fast Delivery">Clean Code &amp; Fast Delivery</span>
+                    <span class="ribbon-orb" aria-hidden="true"></span>
+                </div>
+                <div class="ribbon-item">
+                    <span class="ribbon-phrase" data-text="Creative Brand Identity">Creative Brand Identity</span>
+                    <span class="ribbon-orb" aria-hidden="true"></span>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Projects Section -->
     <section class="projects" id="projects">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
             <p class="section-subtitle">Here are some of my recent works</p>
+
+            <!-- Editorial Featured Project & 35mm Camera Roll Showcase (Above Project Cards) -->
+            <div class="project-film-showcase" id="projectFilmShowcase">
+                <div class="film-showcase-hero">
+                    <!-- Left Editorial Headline & CTA -->
+                    <div class="film-showcase-copy">
+                        <h3 class="film-editorial-title">
+                            BUILDING SCALABLE<br>
+                            DIGITAL PRODUCTS WITH<br>
+                            AI, CODE &amp; CREATIVITY.
+                        </h3>
+                        <p class="film-editorial-desc">
+                            Every project in my portfolio is engineered for real-world impact — combining full-stack architecture, intelligent AI workflows, and modern interactive design.
+                        </p>
+                        <div class="film-editorial-actions">
+                            <a href="https://hnditweb.up.railway.app/" target="_blank" class="film-cta-btn" id="filmFeaturedLink">
+                                <span id="filmFeaturedBtnText">EXPLORE HNDIT SMART LAB</span>
+                                <i class="fas fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Featured Project Preview Frame with Viewfinder Corner -->
+                    <div class="film-featured-stage">
+                        <span class="film-corner-bracket" aria-hidden="true"></span>
+                        <div class="film-featured-frame">
+                            <img src="assets/images/camera-roll/1.png" alt="HNDIT SMART LAB" id="filmFeaturedImg">
+                            <div class="film-featured-meta">
+                                <span class="film-frame-code" id="filmFeaturedCode">FRAME 01A // AI E-LEARNING</span>
+                                <h4 id="filmFeaturedTitle">HNDIT SMART LAB</h4>
+                                <span class="film-frame-tags" id="filmFeaturedTags">Next.js &bull; React &bull; TypeScript &bull; Gemini AI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full-Width Tilted 35mm Camera Film Roll (Moves Right-to-Left)
+             Images are loaded from: assets/images/camera-roll/ -->
+        <div class="camera-roll-band" id="cameraRollBand" data-folder="assets/images/camera-roll" aria-label="Projects Camera Roll">
+            <div class="camera-roll-strip">
+                <div class="camera-roll-sprockets" aria-hidden="true"></div>
+
+                <div class="camera-roll-viewport">
+                    <div class="camera-roll-track" id="cameraRollTrack"></div>
+                </div>
+
+                <div class="camera-roll-sprockets sprockets-bottom" aria-hidden="true"></div>
+            </div>
+        </div>
+
+        <div class="container">
             <div class="projects-grid">
 
             <!-- Project Card 1 -->
@@ -485,7 +845,7 @@ support. while improving customer service and presentation skills..</p>
                                 <a href="https://github.com/dimuthushalinda/Construct-flow" target="_blank" class="project-link">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://github.com/dimuthushalinda/Construct-flow" target="_blank" class="project-link">
+                                <a href="https://construct-flow.up.railway.app/" target="_blank" class="project-link">
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
                             </div>
@@ -577,6 +937,257 @@ support. while improving customer service and presentation skills..</p>
                             <span class="tech-tag">Flask</span>
                         </div>
                     </div>
+                </div>
+
+                <!-- Project Card 7 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/quizblitz.jpg" alt="Quiz Blitz">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/dimuthu-shalinda/quiz-blitz" target="_blank" class="project-link" title="GitHub Repository">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://github.com/dimuthu-shalinda/quiz-blitz" target="_blank" class="project-link" title="Live Preview">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Quiz Blitz</h3>
+                        <p>An interactive trivia and competitive quiz web platform built with TypeScript and modern component architecture. Features real-time countdown timer challenges, dynamic score calculation, responsive category selection, and an engaging neon gaming interface with live leaderboard updates.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">Supabase</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 8 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/lms.PNG" alt="LMS Learning Platform">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/dimuthu-shalinda/LMS" target="_blank" class="project-link" title="GitHub Repository">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://live.think-path.com/" target="_blank" class="project-link" title="Live Preview">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>LMS - Learning Management System</h3>
+                        <p>A comprehensive educational management platform developed for structured course delivery, student learning progress tracking, video lecture modules, and academic performance monitoring. Includes administrative dashboards, interactive curriculum views, and reliable backend database architecture.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Graphic Design Gallery Section -->
+    <section class="gallery-section" id="designs">
+        <div class="container">
+            <h2 class="section-title">Graphic Design Showcase</h2>
+            <p class="section-subtitle">Visual identities, brand packages, event typography, and modern digital artwork</p>
+
+            <!-- Filter Categories -->
+            <div class="gallery-filter-bar">
+                <button class="gallery-filter-btn active" data-filter="all">All</button>
+                <button class="gallery-filter-btn" data-filter="branding">Branding</button>
+                <button class="gallery-filter-btn" data-filter="posters">Posters</button>
+                <button class="gallery-filter-btn" data-filter="packaging">Packaging</button>
+                <button class="gallery-filter-btn" data-filter="social">Social Media</button>
+                <button class="gallery-filter-btn" data-filter="art">Illustrations</button>
+            </div>
+
+            <!-- Slider Container with Side Arrows -->
+            <div class="design-slider-container">
+                <button class="gallery-nav-arrow prev" id="designPrevBtn" aria-label="Previous Design" title="Previous Work">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="design-slider-viewport" id="designSliderViewport">
+                    <div class="design-slider-track" id="designSliderTrack">
+                    <!-- Slide Item 1: Curry Bowl -->
+                    <div class="design-card" data-category="branding" data-index="0"
+                         data-title="Curry Bowl Restaurant Identity"
+                         data-category-label="Brand Identity & Packaging"
+                         data-client="Curry Bowl Restaurant • Croatia"
+                         data-image="assets/images/designs/currybowl_branding.jpg"
+                         data-tools="Adobe Photoshop, Adobe Illustrator, CorelDraw"
+                         data-desc="Complete restaurant visual identity, eco-friendly kraft paper takeaway packaging, embossed business cards, and contemporary restaurant menu layout tailored for Curry Bowl Restaurant in Croatia.">
+                        <div class="design-card-inner">
+                            <div class="design-card-media">
+                                <img src="assets/images/designs/currybowl_branding.jpg" alt="Curry Bowl Restaurant Identity" loading="lazy">
+                                <div class="design-card-overlay">
+                                    <span class="overlay-action"><i class="fas fa-arrow-up-right-from-square"></i> View Project</span>
+                                </div>
+                            </div>
+                            <div class="design-card-meta">
+                                <div class="design-meta-text">
+                                    <h3 class="design-title">Curry Bowl Restaurant</h3>
+                                    <p class="design-subtitle">Brand Identity & Packaging</p>
+                                </div>
+                                <span class="design-client-tag">Croatia</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 2: INNOVISION -->
+                    <div class="design-card" data-category="posters" data-index="1"
+                         data-title="INNOVISION 2026 Key Visual Poster"
+                         data-category-label="Event Key Visual & Poster"
+                         data-client="ATI Galle • Dept. of IT"
+                         data-image="assets/images/designs/innovision_poster.jpg"
+                         data-tools="Adobe Photoshop, Adobe Illustrator"
+                         data-desc="Futuristic exhibition keynote poster featuring holographic neon illumination, dynamic cybernetic robot illustration, balanced typography, and dark gallery ambiance for INNOVISION 2026.">
+                        <div class="design-card-inner">
+                            <div class="design-card-media">
+                                <img src="assets/images/designs/innovision_poster.jpg" alt="INNOVISION 2026 Key Visual Poster" loading="lazy">
+                                <div class="design-card-overlay">
+                                    <span class="overlay-action"><i class="fas fa-arrow-up-right-from-square"></i> View Project</span>
+                                </div>
+                            </div>
+                            <div class="design-card-meta">
+                                <div class="design-meta-text">
+                                    <h3 class="design-title">INNOVISION 2026</h3>
+                                    <p class="design-subtitle">Exhibition Key Visual</p>
+                                </div>
+                                <span class="design-client-tag">ATI Galle</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 3: Solstice -->
+                    <div class="design-card" data-category="packaging" data-index="2"
+                         data-title="Solstice Cold Brew Luxury Packaging"
+                         data-category-label="Packaging & Label Design"
+                         data-client="Aura Specialty Coffee"
+                         data-image="assets/images/designs/solstice_packaging.jpg"
+                         data-tools="Adobe Illustrator, Adobe Photoshop"
+                         data-desc="High-end artisanal beverage packaging featuring clean Swiss typographic hierarchy, gold foil embossed sun insignia stamp, and rich forest green matte box container.">
+                        <div class="design-card-inner">
+                            <div class="design-card-media">
+                                <img src="assets/images/designs/solstice_packaging.jpg" alt="Solstice Cold Brew Packaging" loading="lazy">
+                                <div class="design-card-overlay">
+                                    <span class="overlay-action"><i class="fas fa-arrow-up-right-from-square"></i> View Project</span>
+                                </div>
+                            </div>
+                            <div class="design-card-meta">
+                                <div class="design-meta-text">
+                                    <h3 class="design-title">Solstice Cold Brew</h3>
+                                    <p class="design-subtitle">Artisanal Packaging & Label</p>
+                                </div>
+                                <span class="design-client-tag">Coffee Co.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 4: Social Media -->
+                    <div class="design-card" data-category="social" data-index="3"
+                         data-title="Digital Agency Social Campaign"
+                         data-category-label="Social Media & Digital Ads"
+                         data-client="Creative Growth Agency"
+                         data-image="assets/images/designs/social_campaign.jpg"
+                         data-tools="Adobe Photoshop, Adobe Illustrator, Figma"
+                         data-desc="High-conversion digital advertising suite including multi-slide Instagram carousel posts, story ads with 3D glassmorphic spheres, energetic gradients, and engaging marketing copy.">
+                        <div class="design-card-inner">
+                            <div class="design-card-media">
+                                <img src="assets/images/designs/social_campaign.jpg" alt="Digital Agency Social Campaign" loading="lazy">
+                                <div class="design-card-overlay">
+                                    <span class="overlay-action"><i class="fas fa-arrow-up-right-from-square"></i> View Project</span>
+                                </div>
+                            </div>
+                            <div class="design-card-meta">
+                                <div class="design-meta-text">
+                                    <h3 class="design-title">Digital Agency Campaign</h3>
+                                    <p class="design-subtitle">Social Media & Brand Ads</p>
+                                </div>
+                                <span class="design-client-tag">Campaign</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 5: Geometric Tech -->
+                    <div class="design-card" data-category="branding" data-index="4"
+                         data-title="Geometric Tech Brand Identity System"
+                         data-category-label="Brand Identity & Guidelines"
+                         data-client="Corporate Identity Suite"
+                         data-image="assets/images/designs/geometric_identity.jpg"
+                         data-tools="Adobe Illustrator, Adobe Photoshop"
+                         data-desc="Corporate identity manual and logo construction system built on golden ratio geometry, comprehensive color swatch palettes, dark/light variations, and stationery mockups.">
+                        <div class="design-card-inner">
+                            <div class="design-card-media">
+                                <img src="assets/images/designs/geometric_identity.jpg" alt="Geometric Tech Brand Identity System" loading="lazy">
+                                <div class="design-card-overlay">
+                                    <span class="overlay-action"><i class="fas fa-arrow-up-right-from-square"></i> View Project</span>
+                                </div>
+                            </div>
+                            <div class="design-card-meta">
+                                <div class="design-meta-text">
+                                    <h3 class="design-title">Geometric Tech</h3>
+                                    <p class="design-subtitle">Logo & Brand Guidelines</p>
+                                </div>
+                                <span class="design-client-tag">Identity</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide Item 6: Cosmic Dreamscape -->
+                    <div class="design-card" data-category="art" data-index="5"
+                         data-title="Cosmic Dreamscape Vector Artwork"
+                         data-category-label="Vector Art & Digital Illustration"
+                         data-client="Creative Artwork Series"
+                         data-image="assets/images/designs/cosmic_illustration.jpg"
+                         data-tools="Adobe Illustrator, Adobe Photoshop"
+                         data-desc="Surreal sci-fi digital artwork featuring an astronaut drifting through neon celestial portals, liquid gradients, hand-crafted vector typography, and vivid contrast.">
+                        <div class="design-card-inner">
+                            <div class="design-card-media">
+                                <img src="assets/images/designs/cosmic_illustration.jpg" alt="Cosmic Dreamscape Vector Artwork" loading="lazy">
+                                <div class="design-card-overlay">
+                                    <span class="overlay-action"><i class="fas fa-arrow-up-right-from-square"></i> View Project</span>
+                                </div>
+                            </div>
+                            <div class="design-card-meta">
+                                <div class="design-meta-text">
+                                    <h3 class="design-title">Cosmic Dreamscape</h3>
+                                    <p class="design-subtitle">Vector Art & Print Edition</p>
+                                </div>
+                                <span class="design-client-tag">Artwork</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="gallery-nav-arrow next" id="designNextBtn" aria-label="Next Design" title="Next Work">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+            <!-- Slider Footer with Progress & Indicators -->
+            <div class="design-slider-footer">
+                <div class="design-progress-wrap">
+                    <div class="design-progress-bar" id="designProgressBar"></div>
+                </div>
+                <div class="design-dots-container" id="designDotsContainer">
+                    <!-- Dots will be dynamically generated by JS -->
+                </div>
+                <div class="design-swipe-hint">
+                    <i class="fas fa-arrows-left-right"></i> Drag or swipe to explore
                 </div>
             </div>
         </div>
@@ -705,31 +1316,118 @@ support. while improving customer service and presentation skills..</p>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" id="footer">
+        <!-- 3D Perspective Grid & Horizon Glow Background -->
+        <div class="footer-bg-scene" aria-hidden="true">
+            <div class="footer-horizon-glow"></div>
+            <div class="footer-perspective-grid"></div>
+        </div>
+
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <h3>Dimuthu Shalinda</h3>
-                    <p>Full Stack Developer & Creative Designer</p>
+            <!-- Top Centered CTA & Tech Strip -->
+            <div class="footer-hero-cta">
+                <h2 class="footer-cta-title">
+                    Join <span class="footer-cta-highlight">20+ happy clients</span><br>
+                    growing their digital presence with me
+                </h2>
+                <p class="footer-cta-subtitle">
+                    Get high-performance web applications &amp; modern UI/UX designs — fast delivery, clean architecture, and dedicated support for your brand's success.
+                </p>
+                <div class="footer-trust-strip" aria-label="Core Technologies">
+                    <span class="trust-badge"><i class="fab fa-react"></i> React &amp; Next.js</span>
+                    <span class="trust-badge"><i class="fab fa-node-js"></i> Node.js</span>
+                    <span class="trust-badge"><i class="fab fa-figma"></i> Figma UI/UX</span>
+                    <span class="trust-badge"><i class="fas fa-database"></i> MongoDB &amp; SQL</span>
                 </div>
-                <div class="footer-center">
-                    <div class="social-links">
-                        <a href="https://github.com/dimuthu-shalinda" target="_blank" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/dimuthu-shalinda/" target="_blank" title="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://twitter.com/yourusername" target="_blank" title="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="https://instagram.com/dimuthushalinda" target="_blank" title="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
+            </div>
+        </div>
+
+        <!-- Middle Giant Animated Alphabet-Reel Wordmark (DIMUTHU SHALINDA) -->
+        <div class="kinetic-footer-banner" id="kineticFooterBanner" aria-label="Dimuthu Shalinda">
+            <div class="kinetic-banner-inner">
+                <div class="kinetic-word-row" data-word="DIMUTHU" id="kineticRowTop"></div>
+                <div class="kinetic-word-row" data-word="SHALINDA" id="kineticRowBottom"></div>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Bottom Multi-Column Footer Content -->
+            <div class="footer-main-grid">
+                <div class="footer-brand-col">
+                    <a href="#home" class="footer-brand-logo">
+                        <span class="brand-bold">DIMUTHU</span>
+                        <span class="brand-light">SHALINDA</span>
+                    </a>
+                    <p class="footer-brand-desc">
+                        Dimuthu Shalinda offers a comprehensive selection of full-stack development and UI/UX design solutions. Building scalable web apps, modern interfaces, APIs, mobile experiences, and more.
+                    </p>
                 </div>
-                <div class="footer-right">
-                    <p>&copy; 2025 Dimuthu Shalinda. All rights reserved.</p>
+
+                <div class="footer-links-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Full Stack Apps</a></li>
+                        <li><a href="#services">UI/UX Design</a></li>
+                        <li><a href="#services">Frontend Dev</a></li>
+                        <li><a href="#services">Backend &amp; APIs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Expertise</h4>
+                    <ul>
+                        <li><a href="#services">Landing Pages</a></li>
+                        <li><a href="#services">Mobile Apps</a></li>
+                        <li><a href="#designs">Graphic Design</a></li>
+                        <li><a href="#services">Database Design</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact Me</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#experience">Work Experience</a></li>
+                        <li><a href="#designs">Design Gallery</a></li>
+                        <li><a href="#blog">Latest Articles</a></li>
+                        <li><a href="mailto:dimuthushalinda0404@gmail.com">Hire Me Direct</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Legal & Contact Bar -->
+            <div class="footer-bottom-bar">
+                <div class="footer-meta-links">
+                    <span>&copy; 2025 Dimuthu Shalinda</span>
+                    <span class="meta-dot">&middot;</span>
+                    <a href="mailto:dimuthushalinda0404@gmail.com">dimuthushalinda0404@gmail.com</a>
+                    <span class="meta-dot">&middot;</span>
+                    <a href="tel:+94768343138">+94 76 8343 138</a>
+                    <span class="meta-dot">&middot;</span>
+                    <span>Udugama, Galle, Sri Lanka</span>
+                </div>
+                <div class="social-links footer-social-compact">
+                    <a href="https://github.com/dimuthu-shalinda" target="_blank" title="GitHub" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dimuthu-shalinda/" target="_blank" title="LinkedIn" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://twitter.com/yourusername" target="_blank" title="Twitter" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://instagram.com/dimuthushalinda" target="_blank" title="Instagram" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -746,6 +1444,65 @@ support. while improving customer service and presentation skills..</p>
         <img class="image-modal-content" id="modalImage">
     </div>
 
-    <script src="assets/js/main.js?v=4"></script>
+    <!-- Dedicated Graphic Design Lightbox Modal -->
+    <div id="designLightbox" class="design-lightbox" aria-hidden="true" role="dialog">
+        <div class="design-lightbox-backdrop" id="lightboxBackdrop"></div>
+        <div class="design-lightbox-content">
+            <button class="design-lightbox-close" id="lightboxCloseBtn" aria-label="Close Lightbox">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="design-lightbox-nav prev" id="lightboxPrevBtn" aria-label="Previous artwork">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="design-lightbox-nav next" id="lightboxNextBtn" aria-label="Next artwork">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <div class="design-lightbox-layout">
+                <div class="design-lightbox-media">
+                    <img id="lightboxImg" src="" alt="Artwork Preview">
+                </div>
+                <div class="design-lightbox-info">
+                    <span class="lightbox-category" id="lightboxCategory">Category</span>
+                    <h3 class="lightbox-title" id="lightboxTitle">Artwork Title</h3>
+                    <div class="lightbox-client" id="lightboxClient"><i class="fas fa-briefcase"></i> <span>Client</span></div>
+                    <p class="lightbox-desc" id="lightboxDesc">Description of artwork</p>
+                    <div class="lightbox-tools-box">
+                        <span class="lightbox-tools-label">Tools Used:</span>
+                        <div class="lightbox-tools-tags" id="lightboxTools"></div>
+                    </div>
+                    <div class="lightbox-actions">
+                        <a id="lightboxFullImageBtn" href="" target="_blank" class="btn btn-secondary">
+                            <i class="fas fa-external-link-alt"></i> Open Full High-Res
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Work Experience Zoom Detail Modal (Transparent Blurred Backdrop) -->
+    <div id="experienceModal" class="exp-modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="exp-modal-card" id="experienceModalCard">
+            <button type="button" class="exp-modal-close" id="experienceModalClose" aria-label="Close details">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="exp-modal-top">
+                <span class="exp-modal-period" id="expModalPeriod"><i class="far fa-calendar-alt"></i> Jan 2024 - Present</span>
+            </div>
+            <h3 class="exp-modal-role" id="expModalRole">Full Stack Developer</h3>
+            <p class="exp-modal-company" id="expModalCompany"><i class="fas fa-building"></i> Freelance Web Developer</p>
+            <p class="exp-modal-desc" id="expModalDesc"></p>
+            <div class="exp-modal-highlights-wrap">
+                <h4>Key Highlights</h4>
+                <ul class="exp-modal-highlights" id="expModalHighlights"></ul>
+            </div>
+            <div class="exp-modal-tags" id="expModalTags"></div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor Glow Effect (Circle Ring Removed) -->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <script src="assets/js/main.js?v=14"></script>
 </body>
 </html>
