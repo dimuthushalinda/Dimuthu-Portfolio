@@ -670,14 +670,24 @@ function initServicesBalloonPile() {
             const padX = 14;
 
             if (isMobile) {
-                // On mobile: 2 columns x 5 rows stacked pile at the bottom
-                const col = i % 2;
-                const row = Math.floor(i / 2);
-                const colRatio = col === 0 ? 0.28 : 0.72;
-                const rawX = stageW * colRatio + (row % 2 === 0 ? -6 : 6);
-                b.targetX = Math.max(halfW + padX, Math.min(stageW - halfW - padX, rawX));
-                b.targetY = stageH - halfH - 8 - row * (b.h * 0.86);
-                b.targetAngle = row === 0 ? 0 : (col === 0 ? -9 : 10) * (row % 2 === 0 ? 1 : -0.7);
+                // On mobile: staggered 2-3 column compact pile so all 16 pills fit comfortably inside the stage
+                const mobileSlots = [
+                    { x: 0.26, l: 0, a: 0 }, { x: 0.74, l: 0, a: 0 },
+                    { x: 0.24, l: 1, a: -7 }, { x: 0.76, l: 1, a: 8 },
+                    { x: 0.28, l: 2, a: 6 }, { x: 0.72, l: 2, a: -8 },
+                    { x: 0.25, l: 3, a: -9 }, { x: 0.75, l: 3, a: 7 },
+                    { x: 0.28, l: 4, a: 8 }, { x: 0.72, l: 4, a: -6 },
+                    { x: 0.26, l: 5, a: -7 }, { x: 0.74, l: 5, a: 9 },
+                    { x: 0.30, l: 6, a: 5 }, { x: 0.70, l: 6, a: -7 },
+                    { x: 0.34, l: 7, a: -5 }, { x: 0.66, l: 7, a: 6 }
+                ];
+                const mCfg = mobileSlots[i % mobileSlots.length];
+                const mobilePadX = 8;
+                const rawX = stageW * mCfg.x;
+                b.targetX = Math.max(halfW + mobilePadX, Math.min(stageW - halfW - mobilePadX, rawX));
+                const rawY = stageH - halfH - 8 - mCfg.l * (b.h * 0.76);
+                b.targetY = Math.max(halfH + 18, rawY);
+                b.targetAngle = mCfg.a;
             } else {
                 const rawX = stageW * b.cfg.xRatio;
                 b.targetX = Math.max(halfW + padX, Math.min(stageW - halfW - padX, rawX));
