@@ -1,7 +1,7 @@
 // ==================================================
 // SUPABASE CONFIG
 // ==================================================
-const SUPABASE_URL = "https://fizudiwdkyalvwilwmpi.supabase.co"; 
+const SUPABASE_URL = "https://fizudiwdkyalvwilwmpi.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZpenVkaXdka3lhbHZ3aWx3bXBpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ4MzkxOTYsImV4cCI6MjA4MDQxNTE5Nn0.VB-4g0DzyGyWzWPUUmbcRPtdLciVHiYw1or52O-dqZk";
 
 // ==================================================
@@ -141,10 +141,10 @@ contactForm.addEventListener("submit", async e => {
 
     try {
         // TEMPORARY: Comment out the line below to work without database
-         await insertToSupabase("contact_submissions", formData);
-        
+        await insertToSupabase("contact_submissions", formData);
+
         // Instead, just log to console (remove this when Supabase is working)
-       console.log("📧 Form Data:", formData);
+        console.log("📧 Form Data:", formData);
         console.log("✅ Form would be submitted to Supabase");
 
         showFormMessage("Message sent successfully! I will reply soon.", "success");
@@ -999,12 +999,12 @@ function initStatsCounter() {
     const animateCount = (element) => {
         const target = +element.getAttribute('data-target');
         if (target === 0) return;
-        
+
         const duration = 2000; // 2 seconds
         // Ensure minimum step time and proper increment if target is very large
         let stepTime = Math.abs(Math.floor(duration / target));
         let increment = 1;
-        
+
         if (stepTime < 10) {
             stepTime = 10;
             increment = Math.ceil(target / (duration / stepTime));
@@ -1020,7 +1020,7 @@ function initStatsCounter() {
                 element.textContent = current;
             }
         }, stepTime);
-        
+
         // Save timer so it can be cleared if scrolled out quickly
         element.dataset.timer = timer;
     };
@@ -1118,7 +1118,7 @@ function closeModal() {
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById("imageModal");
     if (!modal) return;
-    
+
     // Close modal on clicking outside the image
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
@@ -1826,8 +1826,141 @@ function initDesignGallery() {
     startAutoplay();
 }
 
-// Initialize gallery on DOMContentLoaded
+// Initialize gallery & video reels on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
     initDesignGallery();
+    initVideoReelsPlayer();
 });
+
+// ==================================================
+// MOTION & VIDEO EDITING REELS CUSTOM PLAYER
+// ==================================================
+function initVideoReelsPlayer() {
+    const reelCards = Array.from(document.querySelectorAll('.video-reel-card'));
+    if (reelCards.length === 0) return;
+
+    function formatTime(sec) {
+        if (!Number.isFinite(sec) || sec < 0) return '00:00';
+        const m = Math.floor(sec / 60);
+        const s = Math.floor(sec % 60);
+        return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    reelCards.forEach((card) => {
+        const video = card.querySelector('.reel-video-player');
+        const stage = card.querySelector('.reel-video-stage');
+        const bigPlayBtn = card.querySelector('.reel-big-play-btn');
+        const togglePlayBtn = card.querySelector('.reel-toggle-play');
+        const toggleMuteBtn = card.querySelector('.reel-toggle-mute');
+        const fullscreenBtn = card.querySelector('.reel-toggle-fullscreen');
+        const timeline = card.querySelector('.reel-timeline');
+        const timelineFill = card.querySelector('.reel-timeline-fill');
+        const timeLabel = card.querySelector('.reel-time-label');
+
+        if (!video) return;
+
+        function updatePlayUI(playing) {
+            card.classList.toggle('is-playing', playing);
+            if (togglePlayBtn) {
+                togglePlayBtn.innerHTML = playing
+                    ? '<i class="fas fa-pause"></i>'
+                    : '<i class="fas fa-play"></i>';
+            }
+        }
+
+        function togglePlay() {
+            if (video.paused || video.ended) {
+                // Pause all other video reels first so audio never overlaps
+                reelCards.forEach((otherCard) => {
+                    if (otherCard !== card) {
+                        const otherVideo = otherCard.querySelector('.reel-video-player');
+                        if (otherVideo && !otherVideo.paused) {
+                            otherVideo.pause();
+                        }
+                    }
+                });
+                video.play().catch(() => { });
+            } else {
+                video.pause();
+            }
+        }
+
+        if (bigPlayBtn) {
+            bigPlayBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                togglePlay();
+            });
+        }
+
+        if (togglePlayBtn) {
+            togglePlayBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                togglePlay();
+            });
+        }
+
+        if (stage) {
+            stage.addEventListener('click', (e) => {
+                if (e.target.closest('.reel-custom-controls')) return;
+                togglePlay();
+            });
+        }
+
+        video.addEventListener('play', () => updatePlayUI(true));
+        video.addEventListener('pause', () => updatePlayUI(false));
+        video.addEventListener('ended', () => updatePlayUI(false));
+
+        video.addEventListener('loadedmetadata', () => {
+            if (timeLabel) {
+                timeLabel.textContent = `00:00 / ${formatTime(video.duration)}`;
+            }
+        });
+
+        video.addEventListener('timeupdate', () => {
+            const dur = video.duration || 0;
+            const cur = video.currentTime || 0;
+            if (timelineFill && dur > 0) {
+                timelineFill.style.width = `${((cur / dur) * 100).toFixed(2)}%`;
+            }
+            if (timeLabel && dur > 0) {
+                timeLabel.textContent = `${formatTime(cur)} / ${formatTime(dur)}`;
+            }
+        });
+
+        if (timeline) {
+            timeline.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const rect = timeline.getBoundingClientRect();
+                const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / Math.max(1, rect.width)));
+                if (video.duration) {
+                    video.currentTime = ratio * video.duration;
+                }
+            });
+        }
+
+        if (toggleMuteBtn) {
+            toggleMuteBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                video.muted = !video.muted;
+                toggleMuteBtn.innerHTML = video.muted
+                    ? '<i class="fas fa-volume-xmark"></i>'
+                    : '<i class="fas fa-volume-high"></i>';
+            });
+        }
+
+        if (fullscreenBtn) {
+            fullscreenBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.webkitEnterFullscreen) {
+                    video.webkitEnterFullscreen();
+                }
+            });
+        }
+    });
+}
+
 
