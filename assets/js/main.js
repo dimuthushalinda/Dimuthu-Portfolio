@@ -229,6 +229,13 @@ const CAMERA_ROLL_ITEMS = [
         title: "LMS LEARNING SYSTEM",
         tags: "HTML5 • CSS3 • JavaScript • PHP • MySQL",
         link: "https://live.think-path.com/"
+    },
+    {
+        file: "9.png",
+        code: "FRAME 09A // FOOD & E-COMMERCE",
+        title: "BITEBLOOM STOREFRONT",
+        tags: "UI/UX • Brand Identity • Interactive Web",
+        link: "#projects"
     }
 ];
 
@@ -1395,34 +1402,6 @@ function initProjectsCameraRoll() {
 
     renderTrack();
 
-    // Auto-detect extra numbered images dropped into `assets/images/camera-roll/` (e.g. 7.png, 7.jpg, 8.png...)
-    function probeExtraFolderImages(startNum, maxNum) {
-        const exts = ["png", "jpg", "jpeg", "webp"];
-        for (let n = startNum; n <= maxNum; n++) {
-            exts.forEach((ext) => {
-                const candidatePath = `${folder}/${n}.${ext}`;
-                const testImg = new Image();
-                testImg.onload = () => {
-                    if (items.some((it) => it.imgPath === candidatePath)) return;
-                    const idx = items.length + 1;
-                    items.push({
-                        file: `${n}.${ext}`,
-                        imgPath: candidatePath,
-                        edgeNum: `${String(idx).padStart(2, "0")}A`,
-                        code: `FRAME ${String(idx).padStart(2, "0")}A // PROJECT SHOWCASE`,
-                        title: `PROJECT SHOT #${n}`,
-                        tags: "Portfolio Showcase • Creative Engineering",
-                        link: "#projects"
-                    });
-                    renderTrack();
-                };
-                testImg.src = candidatePath;
-            });
-        }
-    }
-
-    probeExtraFolderImages(items.length + 1, 15);
-
     let offsetX = 0;
     const baseSpeed = 1.25; // Right-to-Left motion (offsetX decreases)
     let isHovered = false;
@@ -1650,19 +1629,37 @@ function initDesignGallery() {
         if (!isDragging) startAutoplay();
     });
 
-    // Touch & Mouse Drag / Swipe
+    // Touch & Mouse Drag / Swipe with Live Track Movement
+    let wasDragged = false;
+
+    function getCurrentOffsetPx() {
+        if (visibleCards.length === 0) return 0;
+        const firstCard = visibleCards[0];
+        const cardWidth = firstCard.getBoundingClientRect().width;
+        const gap = parseFloat(window.getComputedStyle(sliderTrack).gap) || 24;
+        return currentIndex * (cardWidth + gap);
+    }
+
     function onDragStart(e) {
+        if (!e.type.includes('touch') && e.button !== 0) return;
         isDragging = true;
+        wasDragged = false;
         sliderViewport.classList.add('is-dragging');
         startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
         currentX = startX;
         movedBy = 0;
+        sliderTrack.style.transition = 'none';
     }
 
     function onDragMove(e) {
         if (!isDragging) return;
         currentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
         movedBy = currentX - startX;
+        if (Math.abs(movedBy) > 10) {
+            wasDragged = true;
+        }
+        const baseOffset = getCurrentOffsetPx();
+        sliderTrack.style.transform = `translateX(${-(baseOffset - movedBy * 0.85)}px)`;
     }
 
     function onDragEnd() {
@@ -1676,13 +1673,19 @@ function initDesignGallery() {
             slideNext();
         } else if (movedBy > threshold) {
             slidePrev();
+        } else {
+            updateSlider(true);
         }
         movedBy = 0;
         resetAutoplayTimer();
+        setTimeout(() => {
+            wasDragged = false;
+        }, 60);
     }
 
+    sliderViewport.addEventListener('dragstart', (e) => e.preventDefault());
     sliderViewport.addEventListener('mousedown', onDragStart);
-    sliderViewport.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mousemove', onDragMove);
     window.addEventListener('mouseup', onDragEnd);
 
     sliderViewport.addEventListener('touchstart', onDragStart, { passive: true });
@@ -1786,9 +1789,9 @@ function initDesignGallery() {
 
     // Attach click events to design cards
     allCards.forEach((card) => {
-        const handleCardOpen = (e) => {
+        const handleCardOpen = () => {
             // Prevent trigger if dragging
-            if (Math.abs(movedBy) > 10) return;
+            if (wasDragged || Math.abs(movedBy) > 10) return;
             const visibleIdx = visibleCards.indexOf(card);
             if (visibleIdx !== -1) {
                 openLightbox(visibleIdx);

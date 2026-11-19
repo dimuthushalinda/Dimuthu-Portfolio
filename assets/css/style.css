@@ -1163,6 +1163,10 @@ html, body {
     white-space: nowrap;
 }
 
+.title-word + .title-word {
+    margin-left: 0.28em;
+}
+
 .title-word-accent .title-char {
     color: var(--primary-color);
     text-shadow: 0 0 24px rgba(0, 230, 118, 0.24);
@@ -2190,7 +2194,7 @@ html, body {
 
 .project-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45), 0 0 28px rgba(0, 230, 118, 0.25);
     border-color: var(--primary-color);
 }
 
@@ -2218,7 +2222,8 @@ html, body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(99, 102, 241, 0.9);
+    background: rgba(5, 16, 10, 0.84);
+    backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2236,19 +2241,24 @@ html, body {
 }
 
 .project-link {
-    width: 50px;
-    height: 50px;
-    background: white;
+    width: 48px;
+    height: 48px;
+    background: rgba(10, 24, 16, 0.94);
+    border: 1.5px solid rgba(0, 230, 118, 0.55);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--primary-color);
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45), 0 0 16px rgba(0, 230, 118, 0.22);
     transition: all var(--transition-speed);
 }
 
 .project-link:hover {
+    background: var(--primary-color);
+    color: #04120a;
+    border-color: var(--primary-color);
     transform: scale(1.1) rotate(5deg);
 }
 
@@ -2342,11 +2352,15 @@ html, body {
     top: 15px;
     right: 15px;
     background: var(--primary-color);
-    color: white;
-    padding: 0.5rem 1rem;
+    color: #04120a;
+    padding: 0.42rem 0.9rem;
     border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: 0.82rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
 .blog-content {
@@ -3100,12 +3114,12 @@ html, body {
 @media (max-width: 968px) {
     .about-content,
     .contact-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 2rem;
     }
     
     .footer-content {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         text-align: center;
     }
     
@@ -3114,20 +3128,25 @@ html, body {
     }
 
     /* Tablet Hero Layout */
+    .hero {
+        min-height: auto;
+    }
+
     .hero-stage {
         min-height: auto;
         padding-bottom: 2.5rem;
+        overflow: hidden;
     }
 
     .hero-person-wrap {
-        position: relative;
-        bottom: auto;
-        left: auto;
-        right: auto;
+        position: relative !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
         transform: none !important;
-        animation: fadeInUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
-        width: min(100%, 480px);
-        height: 460px;
+        animation: fadeInUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both !important;
+        width: min(100%, 460px);
+        height: 440px;
         margin: clamp(1.2rem, 5vw, 2.5rem) auto -2rem;
     }
 
@@ -3597,12 +3616,30 @@ html, body {
 }
 
 /* ===================================
-   Custom Cursor Glow Effect (No Circle Ring; Pointer Only on Selectable Items)
+   Custom Cursor Glow Effect (No Circle Ring; Pointer Only on Selectable Items & Visible Inside Modals)
    =================================== */
 @media (pointer: fine) and (min-width: 769px) {
     html,
     body {
         cursor: none;
+    }
+
+    /* Always show normal cursor inside modals/lightboxes when a card is selected */
+    .design-lightbox,
+    .design-lightbox *,
+    .exp-modal-backdrop,
+    .exp-modal-backdrop *,
+    .image-modal,
+    .image-modal * {
+        cursor: default !important;
+    }
+
+    .design-slider-viewport {
+        cursor: grab !important;
+    }
+
+    .design-slider-viewport.is-dragging {
+        cursor: grabbing !important;
     }
 
     a,
@@ -3614,6 +3651,15 @@ html, body {
     .experience-card,
     .project-card,
     .design-card,
+    .design-card *,
+    .gallery-filter-btn,
+    .gallery-nav-arrow,
+    .design-dot,
+    .design-lightbox-close,
+    .design-lightbox-nav,
+    .design-lightbox-backdrop,
+    .exp-modal-close,
+    .image-modal-close,
     .skill-ring-item,
     .camera-film-frame,
     .kinetic-char-slot,
@@ -3647,7 +3693,8 @@ html, body {
         transparent 70%
     );
     pointer-events: none;
-    z-index: 99990;
+    /* Keep cursor glow above all lightboxes & modals (z-index: 100000) */
+    z-index: 200000;
     transform: translate3d(-500px, -500px, 0);
     will-change: transform;
     mix-blend-mode: screen;
@@ -4278,10 +4325,11 @@ html, body {
 }
 
 .gallery-filter-btn.active {
-    background: #ffffff;
-    color: #0f1016;
-    border-color: #ffffff;
-    font-weight: 600;
+    background: var(--primary-color);
+    color: #04120a;
+    border-color: var(--primary-color);
+    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(0, 230, 118, 0.32);
 }
 
 [data-theme="light"] .gallery-filter-btn {
@@ -4375,6 +4423,45 @@ html, body {
     object-fit: cover;
     display: block;
     transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Studio frame for square brand logos (BiteBloom & Care Pickup) so logos never crop */
+.design-card-media.design-media-contain {
+    background: #ffffff;
+    padding: 10px;
+}
+
+.design-card-media.design-media-contain img {
+    object-fit: contain;
+}
+
+/* Studio frame for vertical cultural/event posters (Enrich Arcane Vap Poya) */
+.design-card-media.design-media-poster {
+    background: radial-gradient(circle at 50% 45%, #203813 0%, #091308 100%);
+}
+
+.design-card-media.design-media-poster img {
+    object-fit: contain;
+}
+
+/* Studio frame for dark-background logos & square social posts */
+.design-card-media.design-media-dark-contain {
+    background: #060908;
+    padding: 8px;
+}
+
+.design-card-media.design-media-dark-contain img {
+    object-fit: contain;
+}
+
+/* Studio frame for light-paper vertical invitations & certificates */
+.design-card-media.design-media-light-poster {
+    background: #f5f2ea;
+    padding: 8px;
+}
+
+.design-card-media.design-media-light-poster img {
+    object-fit: contain;
 }
 
 .design-card:hover .design-card-media img {
@@ -4846,13 +4933,31 @@ html, body {
    Comprehensive Mobile & Small-Screen Responsiveness (All Sections)
    =================================== */
 @media (max-width: 768px) {
+    html,
+    body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    /* Ensure mobile navbar dropdown always floats above hero & sections */
+    .navbar {
+        z-index: 2000;
+    }
+
+    .navbar .nav-pill .nav-links {
+        z-index: 2100;
+    }
+
     /* Section Padding & Container */
     section {
-        padding: 56px 0;
+        padding: 52px 0;
+        overflow-x: hidden;
     }
 
     .container {
-        padding: 0 1.15rem;
+        padding: 0 1rem;
+        width: 100%;
+        max-width: 100%;
     }
 
     .section-title,
@@ -4860,14 +4965,14 @@ html, body {
         display: block;
         width: fit-content;
         max-width: 100%;
-        font-size: clamp(1.8rem, 6.6vw, 2.35rem);
+        font-size: clamp(1.75rem, 6.4vw, 2.3rem);
         margin-bottom: 0.9rem;
     }
 
     .section-subtitle {
-        font-size: 0.96rem;
-        margin-bottom: 2.2rem;
-        padding: 0 0.5rem;
+        font-size: 0.94rem;
+        margin-bottom: 2rem;
+        padding: 0 0.25rem;
     }
 
     /* Prevent any grid child from forcing horizontal overflow on mobile */
@@ -4881,46 +4986,101 @@ html, body {
     .about-education-col,
     .footer-links-col,
     .film-showcase-copy,
-    .film-featured-stage {
+    .film-featured-stage,
+    .video-reel-card {
         min-width: 0;
         max-width: 100%;
     }
 
     /* Hero Mobile Refinements */
+    .hero {
+        min-height: auto;
+        padding: 0.35rem 0 1.25rem;
+        overflow: hidden;
+    }
+
+    .hero-wrapper {
+        padding: 0 1rem;
+    }
+
     .hero-stage {
+        min-height: auto;
         justify-content: flex-start;
-        padding-bottom: 1.75rem;
+        padding-bottom: 1.5rem;
+        overflow: hidden;
     }
 
     .hero-top-bar {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
         gap: 0.4rem;
-        padding: 0.4rem 0 0.65rem;
+        padding: 0.45rem 0 0.65rem;
+    }
+
+    .top-role-primary,
+    .top-role-secondary,
+    .status-label {
+        font-size: 0.64rem;
+        letter-spacing: 0.06em;
     }
 
     .hero-bg-word {
-        font-size: clamp(3.2rem, 21.5vw, 7.2rem);
-        top: 0.06em;
+        font-size: clamp(3.15rem, 20vw, 6.6rem);
+        top: 0.25rem;
+        width: 100%;
+        overflow: hidden;
     }
 
     .hero-person-wrap {
-        position: relative;
+        position: relative !important;
         left: auto !important;
         right: auto !important;
         bottom: auto !important;
         transform: none !important;
-        animation: fadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both !important;
-        width: min(100%, 370px);
-        height: clamp(310px, 80vw, 390px);
-        margin: 0.65rem auto -1.65rem;
+        animation: none !important;
+        opacity: 1 !important;
+        width: min(100%, 350px);
+        height: clamp(300px, 78vw, 380px);
+        margin: 1.35rem auto -2.4rem;
+    }
+
+    .hero-tagline-card {
+        background: rgba(0, 230, 118, 0.05);
+        border: 1px solid rgba(0, 230, 118, 0.18);
+        padding: 0.72rem 1.15rem;
+        border-radius: 14px;
     }
 
     .hero-cutout-photo {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
         transform: none !important;
+        object-fit: contain;
         object-position: center bottom;
     }
 
+    .hero-content {
+        grid-template-columns: minmax(0, 1fr);
+        padding-top: 0;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
     .hero-title {
-        font-size: clamp(2.85rem, 13vw, 4.1rem);
+        font-size: clamp(2.75rem, 12.8vw, 4rem);
+    }
+
+    .hero-subtitle {
+        font-size: 0.92rem;
+    }
+
+    .hero-description {
+        font-size: 0.9rem;
+        max-width: 100%;
     }
 
     .hero-buttons {
@@ -4928,7 +5088,7 @@ html, body {
         grid-template-columns: 1fr 1fr;
         gap: 0.65rem;
         width: 100%;
-        max-width: 350px;
+        max-width: 340px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -4936,7 +5096,11 @@ html, body {
     .hero-buttons .btn {
         width: 100%;
         padding: 0.72rem 0.65rem;
-        font-size: 0.86rem;
+        font-size: 0.85rem;
+    }
+
+    .hero-worldwide {
+        justify-content: center;
     }
 
     /* Services Falling Pills Mobile Refinements */
@@ -5107,9 +5271,11 @@ html, body {
         width: clamp(195px, 56vw, 240px);
     }
 
-    .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .projects-grid,
+    .blog-grid,
+    .achievement-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.35rem;
         margin-top: 2rem;
     }
 
@@ -5128,7 +5294,23 @@ html, body {
         font-size: 1.05rem;
     }
 
-    /* Graphic Design Filter & Lightbox Mobile Refinements */
+    /* Graphic Design Filter, Slider Arrows & Lightbox Mobile Refinements */
+    .gallery-nav-arrow {
+        top: 38%;
+        width: 38px;
+        height: 38px;
+        background: rgba(6, 16, 11, 0.86);
+        border-color: rgba(0, 230, 118, 0.35);
+    }
+
+    .gallery-nav-arrow.prev {
+        left: 8px;
+    }
+
+    .gallery-nav-arrow.next {
+        right: 8px;
+    }
+
     .gallery-filter-bar {
         gap: 8px;
         margin-bottom: 1.75rem;
@@ -5139,16 +5321,28 @@ html, body {
         font-size: 0.8rem;
     }
 
+    .design-card-media {
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
     .design-lightbox {
-        padding: 12px;
+        padding: 10px;
     }
 
     .design-lightbox-media {
-        max-height: 44vh;
+        max-height: 42vh;
     }
 
     .design-lightbox-media img {
-        max-height: 40vh;
+        max-height: 38vh;
+    }
+
+    .design-lightbox-nav {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+        top: 21%;
     }
 
     /* Contact & Footer Mobile Refinements */
@@ -5267,11 +5461,11 @@ html, body {
 
 .video-reels-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 360px));
+    grid-template-columns: repeat(3, minmax(0, 340px));
     justify-content: center;
-    gap: clamp(1.75rem, 3.8vw, 3rem);
+    gap: clamp(1.5rem, 2.6vw, 2.2rem);
     align-items: stretch;
-    max-width: 820px;
+    max-width: 1120px;
     margin: 0 auto;
 }
 
@@ -5631,9 +5825,28 @@ html, body {
 
 @media (max-width: 680px) {
     .video-reels-grid {
-        grid-template-columns: minmax(0, 350px);
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 360px;
+        width: 100%;
+        margin: 0 auto;
         justify-content: center;
-        gap: 2rem;
+        gap: 1.75rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .skill-ring-circle {
+        width: 92px;
+        height: 92px;
+    }
+
+    .skill-logo-disc {
+        width: 66px;
+        height: 66px;
+    }
+
+    .skill-monogram {
+        font-size: 1.55rem;
     }
 }
 
