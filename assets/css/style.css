@@ -489,7 +489,7 @@ html, body {
    Hero Section (Editorial Poster Style)
    =================================== */
 .hero {
-    min-height: calc(100vh - 80px);
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -608,11 +608,11 @@ html, body {
 /* Main Hero Stage */
 .hero-stage {
     position: relative;
-    flex: 1;
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    min-height: clamp(580px, 80vh, 790px);
+    min-height: clamp(540px, 54vw, 780px);
     padding-bottom: 2.25rem;
 }
 
@@ -669,8 +669,8 @@ html, body {
     bottom: -2.25rem;
     left: 50%;
     transform: translateX(-50%);
-    width: clamp(460px, 56vw, 760px);
-    height: clamp(560px, 86vh, 860px);
+    width: clamp(440px, 56vw, 760px);
+    height: clamp(460px, 54vw, 760px);
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -3107,7 +3107,7 @@ html, body {
 
     .hero-person-wrap {
         width: clamp(380px, 52vw, 620px);
-        height: clamp(460px, 76vh, 720px);
+        height: clamp(420px, 52vw, 660px);
     }
 }
 
