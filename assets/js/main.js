@@ -259,13 +259,20 @@ document.addEventListener("DOMContentLoaded", () => {
     renderHeroStats();
     initStatsCounter();
     initModernSectionTitles();
-    initServicesBalloonPile();
-    initSkillRings();
-    initKineticFooterText();
-    initExperienceMarqueeAndModal();
-    initMidPageKineticRibbon();
-    initProjectsCameraRoll();
     initCursorGlow();
+
+    // Defer below-the-fold layout-reading initializers until after first paint
+    const scheduleIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
+    requestAnimationFrame(() => {
+        scheduleIdle(() => {
+            initServicesBalloonPile();
+            initSkillRings();
+            initKineticFooterText();
+            initExperienceMarqueeAndModal();
+            initMidPageKineticRibbon();
+            initProjectsCameraRoll();
+        }, { timeout: 300 });
+    });
     console.log("🚀 Portfolio Loaded Successfully!");
 });
 

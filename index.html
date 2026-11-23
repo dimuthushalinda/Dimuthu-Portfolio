@@ -2,12 +2,17 @@
 <html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PRXH3F9D"></script>
+    <!-- Google tag (gtag.js) - deferred until after load to protect FCP/LCP -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      window.addEventListener('load', function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-PRXH3F9D';
+        document.head.appendChild(s);
+      });
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -932,7 +937,7 @@
                     <div class="film-featured-stage">
                         <span class="film-corner-bracket" aria-hidden="true"></span>
                         <div class="film-featured-frame">
-                            <img src="assets/images/camera-roll/1.png" alt="HNDIT SMART LAB" id="filmFeaturedImg">
+                            <img src="assets/images/camera-roll/1.png" alt="HNDIT SMART LAB" id="filmFeaturedImg" loading="lazy" decoding="async">
                             <div class="film-featured-meta">
                                 <span class="film-frame-code" id="filmFeaturedCode">FRAME 01A // AI E-LEARNING</span>
                                 <h4 id="filmFeaturedTitle">HNDIT SMART LAB</h4>
@@ -2132,7 +2137,7 @@
     <!-- Custom Cursor Glow Effect (Circle Ring Removed) -->
     <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-    <script src="assets/js/main.js?v=19" defer></script>
+    <script src="assets/js/main.js?v=20" defer></script>
 </body>
 
 </html>
