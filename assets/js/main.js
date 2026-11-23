@@ -271,6 +271,8 @@ document.addEventListener("DOMContentLoaded", () => {
             initExperienceMarqueeAndModal();
             initMidPageKineticRibbon();
             initProjectsCameraRoll();
+            initDesignGallery();
+            initVideoReelsPlayer();
         }, { timeout: 300 });
     });
     console.log("🚀 Portfolio Loaded Successfully!");
@@ -1846,11 +1848,7 @@ function initDesignGallery() {
     startAutoplay();
 }
 
-// Initialize gallery & video reels on DOMContentLoaded
-document.addEventListener('DOMContentLoaded', () => {
-    initDesignGallery();
-    initVideoReelsPlayer();
-});
+// Gallery & video reels are initialized via the deferred DOMContentLoaded scheduler above.
 
 // ==================================================
 // MOTION & VIDEO EDITING REELS CUSTOM PLAYER
