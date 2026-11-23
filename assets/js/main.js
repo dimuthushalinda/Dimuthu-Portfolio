@@ -487,6 +487,16 @@ function initKineticFooterText() {
         }
     }, { passive: true });
 
+    let cachedSlotHeight = 100;
+    function measureSlotHeight() {
+        const sample = slots[0];
+        if (!sample) return;
+        const firstGlyph = sample.reelEl.firstElementChild;
+        cachedSlotHeight = (firstGlyph && firstGlyph.offsetHeight) || sample.slotEl.clientHeight || 100;
+    }
+    measureSlotHeight();
+    window.addEventListener("resize", measureSlotHeight, { passive: true });
+
     function animateReels() {
         const rect = banner.getBoundingClientRect();
         const vh = window.innerHeight || 800;
@@ -505,9 +515,9 @@ function initKineticFooterText() {
         scrollImpulse *= 0.84;
         if (scrollImpulse < 0.02) scrollImpulse = 0;
 
+        const slotHeight = cachedSlotHeight;
+
         slots.forEach((s) => {
-            const firstGlyph = s.reelEl.firstElementChild;
-            const slotHeight = (firstGlyph && firstGlyph.offsetHeight) || s.slotEl.clientHeight || 100;
 
             // Target position is ALWAYS 0 when resting in view, so letters never get stuck half-clipped
             const targetPos = isVisible
@@ -1922,8 +1932,10 @@ function initVideoReelsPlayer() {
         video.addEventListener('timeupdate', () => {
             const dur = video.duration || 0;
             const cur = video.currentTime || 0;
-            if (timelineFill && dur > 0) {
-                timelineFill.style.width = `${((cur / dur) * 100).toFixed(2)}%`;
+            if (dur > 0) {
+                const pct = ((cur / dur) * 100).toFixed(2);
+                if (timelineFill) timelineFill.style.width = `${pct}%`;
+                if (timeline) timeline.setAttribute('aria-valuenow', String(Math.round(Number(pct))));
             }
             if (timeLabel && dur > 0) {
                 timeLabel.textContent = `${formatTime(cur)} / ${formatTime(dur)}`;

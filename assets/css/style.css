@@ -2888,6 +2888,7 @@ html, body {
     margin: 0;
 }
 
+.footer-links-col h3,
 .footer-links-col h4 {
     font-family: var(--font-heading);
     font-size: 0.85rem;
@@ -4587,12 +4588,13 @@ html, body {
 
 .design-dots-container {
     display: flex;
-    gap: 8px;
+    gap: 14px;
     align-items: center;
     justify-content: center;
 }
 
 .design-dot {
+    position: relative;
     width: 10px;
     height: 10px;
     border-radius: 50%;
@@ -4601,6 +4603,12 @@ html, body {
     transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     border: none;
     padding: 0;
+}
+
+.design-dot::after {
+    content: "";
+    position: absolute;
+    inset: -7px;
 }
 
 .design-dot:hover {

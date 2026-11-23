@@ -100,18 +100,23 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Allura&family=Antonio:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css?v=34">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="assets/css/style.css?v=36">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Allura&family=Antonio:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
 </head>
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" aria-label="Primary Navigation">
         <div class="container">
             <div class="nav-pill">
                 <div class="left">
-                    <a href="#home" class="brand"><i class="fas fa-rocket"></i></a>
+                    <a href="#home" class="brand" aria-label="Dimuthu Shalinda Home"><i class="fas fa-rocket" aria-hidden="true"></i></a>
                 </div>
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home" class="nav-link">Home</a></li>
@@ -123,19 +128,20 @@
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="right">
-                    <div class="theme-toggle" id="themeToggle">
-                        <i class="fas fa-sun"></i>
-                    </div>
+                    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark theme">
+                        <i class="fas fa-sun" aria-hidden="true"></i>
+                    </button>
                 </div>
             </div>
-            <div class="hamburger" id="hamburger">
+            <button type="button" class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </nav>
 
+    <main id="main-content">
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-wrapper">
@@ -147,7 +153,7 @@
                 </div>
                 <div class="hero-top-status">
                     <span class="status-label">AVAILABLE FOR FREELANCE</span>
-                    <span class="status-sparkle" aria-label="Available for freelance">
+                    <span class="status-sparkle" aria-hidden="true">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
                             <path d="M12 1L14.5 9.5L23 12L14.5 14.5L12 23L9.5 14.5L1 12L9.5 9.5L12 1Z" />
                         </svg>
@@ -163,9 +169,9 @@
                 <!-- Center-Bottom Cut-Out Person Photo -->
                 <div class="hero-person-wrap">
                     <div class="hero-person-glow" aria-hidden="true"></div>
-                    <img src="assets/images/newhero.png?v=2"
-                        alt="Dimuthu Shalinda - Full Stack Developer and Creative Designer" width="860" height="1000"
-                        class="hero-photo hero-cutout-photo" fetchpriority="high">
+                    <img src="assets/images/newhero.png?v=3"
+                        alt="Dimuthu Shalinda - Full Stack Developer and Creative Designer" width="680" height="725"
+                        class="hero-photo hero-cutout-photo" fetchpriority="high" decoding="sync">
                 </div>
 
                 <!-- Foreground Content Columns -->
@@ -189,7 +195,7 @@
                             <a href="#contact" class="btn btn-secondary smooth-scroll">Get In Touch</a>
                         </div>
                         <div class="hero-worldwide">
-                            <span class="worldwide-icon" aria-label="Available worldwide">
+                            <span class="worldwide-icon" aria-hidden="true">
                                 <i class="fas fa-globe" aria-hidden="true"></i>
                             </span>
                             <span class="worldwide-text">AVAILABLE WORLDWIDE</span>
@@ -202,7 +208,7 @@
                     <!-- Right-Middle & Bottom-Right Block -->
                     <div class="hero-right-block">
                         <div class="hero-tagline-card">
-                            <div class="sparkle-badge" aria-label="Sparkle icon">
+                            <div class="sparkle-badge" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
                                     <path d="M12 2L14.2 9.8L22 12L14.2 14.2L12 22L9.8 14.2L2 12L9.8 9.8L12 2Z" />
                                 </svg>
@@ -948,15 +954,15 @@
                 <!-- Project Card 1 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets\images\hnditweb.PNG" alt="HNDIT SMART LAB">
+                        <img src="assets/images/hnditweb.PNG" alt="HNDIT SMART LAB" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://github.com/dimuthushalinda/HNDIT-WEB" target="_blank"
-                                    class="project-link">
-                                    <i class="fab fa-github"></i>
+                                <a href="https://github.com/dimuthushalinda/HNDIT-WEB" target="_blank" rel="noopener noreferrer"
+                                    class="project-link" aria-label="HNDIT SMART LAB GitHub Repository">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
                                 </a>
-                                <a href="https://hnditweb.up.railway.app/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
+                                <a href="https://hnditweb.up.railway.app/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="HNDIT SMART LAB Live Preview">
+                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
@@ -981,18 +987,17 @@
                 <!-- Project Card 2 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets\images\portfolio.PNG" alt="Portfolio-Website">
+                        <img src="assets/images/portfolio.PNG" alt="Portfolio Website" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="https://github.com/Scopiarchy/Portfolio-Website-Personal-Project-"
-                                    target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
+                                    target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Portfolio Website GitHub Repository">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
                                 </a>
-                                <a href="roject-links">
-                                    <a href="https://github.com/Scopiarchy/Portfolio-Website-Personal-Project-"
-                                        target="_blank" class="project-link">
-                                        <i class="fas fa-external-link-alt"></i>
-                                    </a>
+                                <a href="https://github.com/Scopiarchy/Portfolio-Website-Personal-Project-"
+                                    target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Portfolio Website Live Preview">
+                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -1012,15 +1017,15 @@
                 <!-- Project Card 3 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets\images\constructai.PNG" alt="ConstructAi">
+                        <img src="assets/images/constructai.PNG" alt="ConstructAi" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://github.com/dimuthushalinda/Construct-flow" target="_blank"
-                                    class="project-link">
-                                    <i class="fab fa-github"></i>
+                                <a href="https://github.com/dimuthushalinda/Construct-flow" target="_blank" rel="noopener noreferrer"
+                                    class="project-link" aria-label="ConstructAi GitHub Repository">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
                                 </a>
-                                <a href="https://construct-flow.up.railway.app/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
+                                <a href="https://construct-flow.up.railway.app/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="ConstructAi Live Preview">
+                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
@@ -1042,16 +1047,16 @@
                 <!-- Project Card 4 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets\images\invoice.PNG" alt="Invoice-Billing-System">
+                        <img src="assets/images/invoice.PNG" alt="Invoice-Billing-System" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="https://github.com/Scopiarchy/Invoice-Billing-System-Web-Application"
-                                    target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
+                                    target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Invoice Billing System GitHub Repository">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
                                 </a>
-                                <a href="https://dimuthu-shalinda-portfolio.vercel.app/" target="_blank"
-                                    class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
+                                <a href="https://dimuthu-shalinda-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                    class="project-link" aria-label="Invoice Billing System Live Preview">
+                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
@@ -1073,15 +1078,15 @@
                 <!-- Project Card 5 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets\images\innovion web.PNG" alt="Social Media Dashboard">
+                        <img src="assets/images/innovion web.PNG" alt="INNOVISION 2026 Invitation Website" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <div class="project-links">
-                                <a href="https://github.com/dimuthushalinda/innovision" target="_blank"
-                                    class="project-link">
-                                    <i class="fab fa-github"></i>
+                                <a href="https://github.com/dimuthushalinda/innovision" target="_blank" rel="noopener noreferrer"
+                                    class="project-link" aria-label="INNOVISION Website GitHub Repository">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
                                 </a>
-                                <a href="https://innovision-students.vercel.app/" target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
+                                <a href="https://innovision-students.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="INNOVISION Website Live Preview">
+                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
@@ -1107,16 +1112,16 @@
                 <!-- Project Card 6 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets\images\expence tracker.PNG" alt="AI Chatbot">
+                        <img src="assets/images/expence tracker.PNG" alt="Income and Expense Tracker" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="https://github.com/dimuthu-shalinda/Personal-Expense-and-Income-Manager"
-                                    target="_blank" class="project-link">
-                                    <i class="fab fa-github"></i>
+                                    target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Expense Tracker GitHub Repository">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
                                 </a>
                                 <a href="https://github.com/dimuthu-shalinda/Personal-Expense-and-Income-Manager"
-                                    target="_blank" class="project-link">
-                                    <i class="fas fa-external-link-alt"></i>
+                                    target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Expense Tracker Live Preview">
+                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
@@ -1141,16 +1146,17 @@
                 <!-- Project Card 7-->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets\images\bitebloom.png" alt="Bite Bloom">
+                        <img src="assets/images/bitebloom.png" alt="Bite Bloom" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="https://github.com/dimuthushalinda/BiteBloom-E-Commerce-Website.git"
-                                    target="_blank" class="project-link" title="GitHub Repository">
-                                    <i class="fab fa-github"></i>
+                                    target="_blank" class="project-link" title="GitHub Repository"
+                                    aria-label="Bite Bloom GitHub Repository">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
                                 </a>
                                 <a href="https://bitebloom-one.vercel.app/" target="_blank" class="project-link"
-                                    title="Live Preview">
-                                    <i class="fas fa-external-link-alt"></i>
+                                    title="Live Preview" aria-label="Bite Bloom Live Preview">
+                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
@@ -1172,16 +1178,18 @@
                 <!-- Project Card 8-->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets/images/quizblitz.jpg" alt="Quiz Blitz">
+                        <img src="assets/images/quizblitz.jpg" alt="Quiz Blitz" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="https://github.com/dimuthu-shalinda/quiz-blitz" target="_blank"
-                                    class="project-link" title="GitHub Repository">
-                                    <i class="fab fa-github"></i>
+                                    class="project-link" title="GitHub Repository"
+                                    aria-label="Quiz Blitz GitHub Repository">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
                                 </a>
                                 <a href="https://github.com/dimuthu-shalinda/quiz-blitz" target="_blank"
-                                    class="project-link" title="Live Preview">
-                                    <i class="fas fa-external-link-alt"></i>
+                                    class="project-link" title="Live Preview"
+                                    aria-label="Quiz Blitz Project Page">
+                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
@@ -1204,16 +1212,16 @@
                 <!-- Project Card 9-->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets/images/lms.PNG" alt="LMS Learning Platform">
+                        <img src="assets/images/lms.PNG" alt="LMS Learning Platform" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <div class="project-links">
                                 <a href="https://github.com/dimuthu-shalinda/LMS" target="_blank" class="project-link"
-                                    title="GitHub Repository">
-                                    <i class="fab fa-github"></i>
+                                    title="GitHub Repository" aria-label="LMS Learning Platform GitHub Repository">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
                                 </a>
                                 <a href="https://live.think-path.com/" target="_blank" class="project-link"
-                                    title="Live Preview">
-                                    <i class="fas fa-external-link-alt"></i>
+                                    title="Live Preview" aria-label="LMS Learning Platform Live Preview">
+                                    <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
@@ -1588,7 +1596,7 @@
                         </div>
 
                         <div class="reel-video-stage">
-                            <video class="reel-video-player" preload="metadata" playsinline loop>
+                            <video class="reel-video-player" preload="none" playsinline loop>
                                 <source src="assets/videos/Micro%20Finance%20System%20Promotion%20Video.mp4?v=2#t=0.5" type="video/mp4">
                                 Your browser does not support HTML5 video.
                             </video>
@@ -1604,7 +1612,7 @@
                                 <button type="button" class="reel-ctrl-btn reel-toggle-play" aria-label="Play or Pause">
                                     <i class="fas fa-play"></i>
                                 </button>
-                                <div class="reel-timeline" role="slider" aria-label="Seek video timeline" tabindex="0">
+                                <div class="reel-timeline" role="slider" aria-label="Seek video timeline" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
                                     <div class="reel-timeline-fill"></div>
                                 </div>
                                 <span class="reel-time-label">00:00 / 01:05</span>
@@ -1645,7 +1653,7 @@
                         </div>
 
                         <div class="reel-video-stage">
-                            <video class="reel-video-player" preload="metadata" playsinline loop>
+                            <video class="reel-video-player" preload="none" playsinline loop>
                                 <source src="assets/videos/Think%20Path%20App%20Promotion%20.mp4?v=2#t=0.5" type="video/mp4">
                                 Your browser does not support HTML5 video.
                             </video>
@@ -1661,7 +1669,7 @@
                                 <button type="button" class="reel-ctrl-btn reel-toggle-play" aria-label="Play or Pause">
                                     <i class="fas fa-play"></i>
                                 </button>
-                                <div class="reel-timeline" role="slider" aria-label="Seek video timeline" tabindex="0">
+                                <div class="reel-timeline" role="slider" aria-label="Seek video timeline" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
                                     <div class="reel-timeline-fill"></div>
                                 </div>
                                 <span class="reel-time-label">00:00 / 00:39</span>
@@ -1701,7 +1709,7 @@
                         </div>
 
                         <div class="reel-video-stage">
-                            <video class="reel-video-player" preload="metadata" playsinline loop>
+                            <video class="reel-video-player" preload="none" playsinline loop>
                                 <source src="assets/videos/BiteBloom_logo_animation.mp4?v=1#t=0.2" type="video/mp4">
                                 Your browser does not support HTML5 video.
                             </video>
@@ -1717,7 +1725,7 @@
                                 <button type="button" class="reel-ctrl-btn reel-toggle-play" aria-label="Play or Pause">
                                     <i class="fas fa-play"></i>
                                 </button>
-                                <div class="reel-timeline" role="slider" aria-label="Seek video timeline" tabindex="0">
+                                <div class="reel-timeline" role="slider" aria-label="Seek video timeline" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
                                     <div class="reel-timeline-fill"></div>
                                 </div>
                                 <span class="reel-time-label">00:00 / 00:08</span>
@@ -1794,27 +1802,27 @@
                 <!-- Blog Post 3 -->
                 <article class="blog-card">
                     <div class="blog-image">
-                        <img src="assets\images\fiverr.png" alt="Blog Post 1">
+                        <img src="assets/images/fiverr.png" alt="11 Tricky Ways To Get Your First Order On Fiverr" loading="lazy" decoding="async">
                         <span class="blog-date">Dec 6, 2022</span>
                     </div>
                     <div class="blog-content">
-                        <h3> 11 Tricky Ways To Get Your First Order On Fiverr – 2022</h3>
+                        <h3>11 Tricky Ways To Get Your First Order On Fiverr – 2022</h3>
                         <p>
-                            Fiverr is something like a food city where there are buyers as well as service providers.It
-                            is traded without the use of physical money and is done entirely over the internet.Fiverr is
-                            an online platform that allows get service and sells what people are want.
+                            Fiverr is something like a food city where there are buyers as well as service providers. It
+                            is traded without the use of physical money and is done entirely over the internet. Fiverr is
+                            an online platform that allows getting services and selling what people want.
                         </p>
                         <a href="https://docs.google.com/document/d/1s_iZl-cwmMzmtejlFy6jY-se1RyK-Yvq/edit?usp=drive_link&ouid=108685839921299571097&rtpof=true&sd=true"
-                            target="_blank" class="blog-link">
-                            Read More <i class="fas fa-arrow-right"></i>
+                            target="_blank" rel="noopener noreferrer" class="blog-link">
+                            Read Fiverr Guide <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
                 </article>
 
-                <!-- Blog Post 2 -->
+                <!-- Blog Post 4 -->
                 <article class="blog-card">
                     <div class="blog-image">
-                        <img src="assets\images\Borei-A-ssbn-scaled.webp" alt="Blog Post 2">
+                        <img src="assets/images/Borei-A-ssbn-scaled.webp" alt="Submarine Graveyard at Kola Peninsula, Russia" loading="lazy" decoding="async">
                         <span class="blog-date">Nov 28, 2024</span>
                     </div>
                     <div class="blog-content">
@@ -1825,30 +1833,29 @@
                             Cove, close to the village of Gadzhiyevo, in Murmansk Oblast on the Kola Peninsula.
                         </p>
                         <a href="https://docs.google.com/document/d/1-kEK8RLfTz7OkeqIM3Q2MRxDqAlQUTxJN4rFk-pR638/edit?usp=drive_link"
-                            target="_blank" class="blog-link">
-                            Read More <i class="fas fa-arrow-right"></i>
+                            target="_blank" rel="noopener noreferrer" class="blog-link">
+                            Read Submarine Article <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
                 </article>
 
-                <!-- Blog Post 3 -->
+                <!-- Blog Post 5 -->
                 <article class="blog-card">
                     <div class="blog-image">
-                        <img src="assets\images\jameswebbtelescope.gif">
+                        <img src="assets/images/jameswebbtelescope.gif" alt="James Webb Space Telescope and Hubble Space Telescope" loading="lazy" decoding="async">
                         <span class="blog-date">Nov 20, 2024</span>
                     </div>
                     <div class="blog-content">
-                        <h3>James Webb and his old brother
-
-                        </h3>
+                        <h3>James Webb and his old brother</h3>
                         <p>
                             However, the Hubble Space Telescope, often known as HST or Hubble, is an observatory that
-                            was put into low-Earth orbit in 1990 and is still in use today.Despite not being the first,
+                            was put into low-Earth orbit in 1990 and is still in use today. Despite not being the first,
                             it is one of the biggest and most efficient space telescopes.
-                            <a href="https://docs.google.com/document/d/1B5tNfLs84DpWGShb155hpak0KgwynRnVRwhWsAPQEeY/edit?usp=drive_link"
-                                target="_blank" class="blog-link">
-                                Read More <i class="fas fa-arrow-right"></i>
-                            </a>
+                        </p>
+                        <a href="https://docs.google.com/document/d/1B5tNfLs84DpWGShb155hpak0KgwynRnVRwhWsAPQEeY/edit?usp=drive_link"
+                            target="_blank" rel="noopener noreferrer" class="blog-link">
+                            Read Space Telescope Article <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
                     </div>
                 </article>
             </div>
@@ -1916,6 +1923,8 @@
         </div>
     </section>
 
+    </main>
+
     <!-- Footer -->
     <footer class="footer" id="footer">
         <!-- 3D Perspective Grid & Horizon Glow Background -->
@@ -1967,7 +1976,7 @@
                 </div>
 
                 <div class="footer-links-col">
-                    <h4>Services</h4>
+                    <h3>Services</h3>
                     <ul>
                         <li><a href="#services">Full Stack Apps</a></li>
                         <li><a href="#services">UI/UX Design</a></li>
@@ -1977,7 +1986,7 @@
                 </div>
 
                 <div class="footer-links-col">
-                    <h4>Expertise</h4>
+                    <h3>Expertise</h3>
                     <ul>
                         <li><a href="#services">Landing Pages</a></li>
                         <li><a href="#services">Mobile Apps</a></li>
@@ -1987,7 +1996,7 @@
                 </div>
 
                 <div class="footer-links-col">
-                    <h4>Pages</h4>
+                    <h3>Pages</h3>
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About Me</a></li>
@@ -1997,7 +2006,7 @@
                 </div>
 
                 <div class="footer-links-col">
-                    <h4>Quick Links</h4>
+                    <h3>Quick Links</h3>
                     <ul>
                         <li><a href="#experience">Work Experience</a></li>
                         <li><a href="#designs">Design Gallery</a></li>
@@ -2039,14 +2048,14 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
+    <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
     <!-- Image Modal -->
     <div id="imageModal" class="image-modal">
         <span class="image-modal-close" onclick="closeModal()"><i class="fas fa-times"></i></span>
-        <img class="image-modal-content" id="modalImage">
+        <img class="image-modal-content" id="modalImage" alt="Expanded achievement preview">
     </div>
 
     <!-- Dedicated Graphic Design Lightbox Modal -->
@@ -2111,7 +2120,7 @@
     <!-- Custom Cursor Glow Effect (Circle Ring Removed) -->
     <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
 
-    <script src="assets/js/main.js?v=18"></script>
+    <script src="assets/js/main.js?v=19" defer></script>
 </body>
 
 </html>
