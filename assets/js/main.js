@@ -193,7 +193,7 @@ const CAMERA_ROLL_ITEMS = [
         code: "FRAME 03A // AI CONSTRUCTION",
         title: "CONSTRUCTAI PLATFORM",
         tags: "React Native • FastAPI • Supabase • Claude AI",
-        link: "https://construct-flow.up.railway.app/"
+        link: "https://construct-ai-frontend.vercel.app/"
     },
     {
         file: "4.png",
@@ -1971,12 +1971,43 @@ function initVideoReelsPlayer() {
         }
 
         if (fullscreenBtn) {
+            const lockPortrait = () => {
+                if (screen.orientation && typeof screen.orientation.lock === 'function') {
+                    screen.orientation.lock('portrait').catch(() => {});
+                }
+            };
+
+            const onFsChange = () => {
+                const isFs = document.fullscreenElement === stage || document.webkitFullscreenElement === stage;
+                if (isFs) {
+                    lockPortrait();
+                } else if (screen.orientation && typeof screen.orientation.unlock === 'function') {
+                    try { screen.orientation.unlock(); } catch (_) {}
+                }
+                fullscreenBtn.innerHTML = isFs
+                    ? '<i class="fas fa-compress"></i>'
+                    : '<i class="fas fa-expand"></i>';
+            };
+            document.addEventListener('fullscreenchange', onFsChange);
+            document.addEventListener('webkitfullscreenchange', onFsChange);
+
             fullscreenBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                if (video.requestFullscreen) {
-                    video.requestFullscreen();
-                } else if (video.webkitRequestFullscreen) {
-                    video.webkitRequestFullscreen();
+                const target = stage || video;
+                const isFs = document.fullscreenElement || document.webkitFullscreenElement;
+                if (isFs) {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    }
+                    return;
+                }
+                if (target.requestFullscreen) {
+                    Promise.resolve(target.requestFullscreen()).then(lockPortrait).catch(() => {});
+                } else if (target.webkitRequestFullscreen) {
+                    target.webkitRequestFullscreen();
+                    lockPortrait();
                 } else if (video.webkitEnterFullscreen) {
                     video.webkitEnterFullscreen();
                 }
