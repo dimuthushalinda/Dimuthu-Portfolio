@@ -5026,6 +5026,7 @@ html, body {
         align-items: center;
         gap: 0.4rem;
         padding: 0.45rem 0 0.65rem;
+        animation: none !important;
     }
 
     .top-role-primary,
@@ -5040,6 +5041,12 @@ html, body {
         top: 0.25rem;
         width: 100%;
         overflow: hidden;
+        animation: none !important;
+    }
+
+    .hero-left-block,
+    .hero-right-block {
+        animation: none !important;
     }
 
     .hero-person-wrap {

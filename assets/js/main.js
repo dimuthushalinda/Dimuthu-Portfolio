@@ -241,7 +241,7 @@ const CAMERA_ROLL_ITEMS = [
 
 function renderHeroStats() {
     const statsContainer = document.getElementById("heroStats");
-    if (!statsContainer || !Array.isArray(HERO_STATS)) return;
+    if (!statsContainer || !Array.isArray(HERO_STATS) || statsContainer.children.length > 0) return;
 
     statsContainer.innerHTML = HERO_STATS.map(stat => `
         <div class="hero-stat-item">
@@ -257,23 +257,25 @@ function renderHeroStats() {
 document.addEventListener("DOMContentLoaded", () => {
     initTheme();
     renderHeroStats();
-    initStatsCounter();
-    initModernSectionTitles();
-    initCursorGlow();
 
-    // Defer below-the-fold layout-reading initializers until after first paint
+    // Defer non-critical initializers until after first paint so LCP & TBT stay fast
     const scheduleIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
     requestAnimationFrame(() => {
-        scheduleIdle(() => {
-            initServicesBalloonPile();
-            initSkillRings();
-            initKineticFooterText();
-            initExperienceMarqueeAndModal();
-            initMidPageKineticRibbon();
-            initProjectsCameraRoll();
-            initDesignGallery();
-            initVideoReelsPlayer();
-        }, { timeout: 300 });
+        setTimeout(() => {
+            initStatsCounter();
+            initModernSectionTitles();
+            initCursorGlow();
+            scheduleIdle(() => {
+                initServicesBalloonPile();
+                initSkillRings();
+                initKineticFooterText();
+                initExperienceMarqueeAndModal();
+                initMidPageKineticRibbon();
+                initProjectsCameraRoll();
+                initDesignGallery();
+                initVideoReelsPlayer();
+            }, { timeout: 300 });
+        }, 50);
     });
     console.log("🚀 Portfolio Loaded Successfully!");
 });
