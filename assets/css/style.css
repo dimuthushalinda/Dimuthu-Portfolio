@@ -5069,6 +5069,11 @@ html, body {
         transform: none !important;
         object-fit: contain;
         object-position: center bottom;
+        filter: none;
+    }
+
+    .hero-person-glow {
+        filter: blur(24px);
     }
 
     .hero-content {

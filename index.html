@@ -113,12 +113,17 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Allura&family=Antonio:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@500;600;700;800&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'">
-    <link rel="preload" as="image" href="assets/images/newhero.webp?v=1"
-        imagesrcset="assets/images/newhero-mobile.webp?v=1 500w, assets/images/newhero.webp?v=1 680w"
-        imagesizes="(max-width: 768px) 481px, 680px" fetchpriority="high">
-    <link rel="stylesheet" href="assets/css/style.min.css?v=37">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        media="print" onload="this.media='all'">
+    <link rel="preload" as="image" href="assets/images/newhero-mobile.webp?v=1" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/images/newhero.webp?v=1" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="stylesheet" href="assets/css/style.min.css?v=38">
+    <script>
+      window.addEventListener('load', function () {
+        var fa = document.createElement('link');
+        fa.rel = 'stylesheet';
+        fa.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+        document.head.appendChild(fa);
+      });
+    </script>
     <noscript>
         <link href="https://fonts.googleapis.com/css2?family=Allura&family=Antonio:wght@700&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -184,11 +189,12 @@
                 <!-- Center-Bottom Cut-Out Person Photo -->
                 <div class="hero-person-wrap">
                     <div class="hero-person-glow" aria-hidden="true"></div>
-                    <img src="assets/images/newhero.webp?v=1"
-                        srcset="assets/images/newhero-mobile.webp?v=1 500w, assets/images/newhero.webp?v=1 680w"
-                        sizes="(max-width: 768px) 481px, 680px"
-                        alt="Dimuthu Shalinda - Full Stack Developer and Creative Designer" width="680" height="725"
-                        class="hero-photo hero-cutout-photo" fetchpriority="high" decoding="sync">
+                    <picture>
+                        <source media="(max-width: 768px)" srcset="assets/images/newhero-mobile.webp?v=1">
+                        <img src="assets/images/newhero.webp?v=1"
+                            alt="Dimuthu Shalinda - Full Stack Developer and Creative Designer" width="680" height="725"
+                            class="hero-photo hero-cutout-photo" fetchpriority="high" decoding="sync">
+                    </picture>
                 </div>
 
                 <!-- Foreground Content Columns -->
